@@ -1,3 +1,7 @@
+## Planificación
+
+Aquí puedes ver nuestra planificación en el siguiente link: [Trello](https://trello.com/b/9wNboWN4/red-social-react)
+
 # Rehaciendo tu red social usando librerías y frameworks
 
 ## Preámbulo

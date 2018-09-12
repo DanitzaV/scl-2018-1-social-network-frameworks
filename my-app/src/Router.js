@@ -6,6 +6,7 @@ import {
 import App from './App';
 import Login from './Pages/Login';
 import Muro from './Pages/Muro';
+import FormRegistro from './Componentes/Registro/Form';
 
 
 export default class Router extends Component{
@@ -15,6 +16,7 @@ export default class Router extends Component{
               <App>
                   <Route exact path="/" component={Login}></Route>
                   <Route path="/muro" component={Muro}></Route>
+                  <Route path="/registro" component={FormRegistro}></Route>
               </App>
           </ReactRouter>
       )

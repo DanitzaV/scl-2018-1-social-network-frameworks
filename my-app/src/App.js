@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+
 
 // import Login from './Componentes/Login';
 import { MuiThemeProvider } from '@material-ui/core/styles/MuiThemeProvider';

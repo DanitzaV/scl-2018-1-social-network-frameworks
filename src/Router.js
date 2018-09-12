@@ -13,8 +13,9 @@ export default class Router extends Component{
       return(
           <ReactRouter>
               <App>
-                  <Route exact path="/" component={Login}></Route>
-                  <Route path="/muro" component={Muro}></Route>
+                  <Route  path="/login" component={Login}></Route>
+                  <Route path="/registro" component={Login}></Route>
+                  <Route path="/" component={Muro}></Route>
               </App>
           </ReactRouter>
       )

@@ -16,7 +16,11 @@ export default class Router extends Component{
     }
     
     SingIn = () => {
-        return singIn ? Muro : <Redirect from="/" to="/login" />
+        if(singIn === true){
+            return <Redirect to="/home" />
+        }else{
+            return <Redirect to="/login"/>
+        }
     } 
     
     render(){
@@ -24,8 +28,9 @@ export default class Router extends Component{
       return(
           <ReactRouter>
               <App>
-                  <Route exac path="/" component={this.SingIn}></Route>
-                  <Route  path="/login" component={Login}></Route>
+                  <Route exac path="/" component={this.SingIn} ></Route>
+                  <Route path="/home" component={Muro}></Route>
+                  <Route path="/login" component={Login}></Route>
                   <Route path="/registro" component={Login}></Route>
                   <Route path="/publicar-reseña" component={PublicarReseña}></Route>
                   <Route path="/reseñas" component={Reseñas}></Route>

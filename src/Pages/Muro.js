@@ -1,14 +1,14 @@
-import React  from 'react';
+import React, {Component} from 'react';
 
-const Muro = () => {
-    return(
-        
-        <h2>jeje</h2>
-        
-             
-       
-     
-     )
+class Muro extends Component {
+    render(){
+        return(
+            <div>
+                <h1>hola</h1>
+            </div>
+        )
+    }
 }
+
 
 export default Muro;

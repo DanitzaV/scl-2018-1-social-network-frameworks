@@ -4,8 +4,9 @@ import {
   Route
 } from 'react-router-dom';
 import App from './App';
-import Login from './Pages/Login';
 import Muro from './Pages/Muro';
+import Login from './Pages/Login';
+
 
 
 export default class Router extends Component{
@@ -13,9 +14,10 @@ export default class Router extends Component{
       return(
           <ReactRouter>
               <App>
+                  <Route exac path="/" component={Muro}></Route>
                   <Route  path="/login" component={Login}></Route>
                   <Route path="/registro" component={Login}></Route>
-                  <Route path="/" component={Muro}></Route>
+                  
               </App>
           </ReactRouter>
       )

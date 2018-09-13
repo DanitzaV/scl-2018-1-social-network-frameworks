@@ -3,7 +3,9 @@ import './../Componentes/Login/Login.css'
 import Formulario from './../Componentes/Login/Form';
 import { withStyles } from '@material-ui/core/styles';
 import Title from './../Componentes/Title/Title'
-import logo from './../img/queen.png';
+import logo from '/public/queen.png';
+
+
 const styles = theme => ({
     root: {
       flexGrow: 1,

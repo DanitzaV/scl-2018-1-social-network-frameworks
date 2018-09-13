@@ -1,5 +1,7 @@
 #fondologin{
-    background-color: #E9F8F5;
-    padding-top: 1em;
+    background-color: aquamarine;
     height: 100vh;
+}
+body{
+    margin: 0;
 }

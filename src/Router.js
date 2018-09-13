@@ -8,9 +8,11 @@ import Muro from './Pages/Muro';
 import Login from './Pages/Login';
 
 
-
+let singIn = true;
 export default class Router extends Component{
-  render(){
+    
+ 
+    render(){
       return(
           <ReactRouter>
               <App>

@@ -34,7 +34,7 @@ class FormReseña extends Component {
           <Grid item xs>
           
           </Grid>
-          <Grid item xs={8} sm={6} md={6} lg={6}> 
+          <Grid  className="FormReseña" item xs={8} sm={6} md={6} lg={6}> 
             
               <FormControl margin="normal" fullWidth>
                 <Typography variant="subheading">Nombre de la tienda</Typography>
@@ -62,7 +62,7 @@ class FormReseña extends Component {
                 <Typography variant="subheading">Reseña</Typography>
                 <textarea></textarea>
               </FormControl>
-              <Button component={MyLink}>PUBLICAR</Button>
+              <Button className="btnForm" component={MyLink}>PUBLICAR</Button>
             </Grid>
 
             <Grid item xs>

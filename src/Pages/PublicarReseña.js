@@ -7,6 +7,7 @@ import '../Componentes/PublicarReseña/PublishReview.css';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
 
+
 const styles = theme => ({
     float: {
         alignContent: 'flex-end',
@@ -28,7 +29,7 @@ class PublicarReseña extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <div>
+            <div className="FondoPublicarReseñas">
                 <Grid container spacing={2}>
                 <Grid item xs={1}>
                 <StoreIcon className="storeIcon"/>

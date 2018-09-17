@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, FormControl, Input, Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import '../PublicarReseña/PublishReview.css';
 import {
   BrowserRouter as ReactRouter,
@@ -21,7 +20,7 @@ const styles = theme => ({
     display: 'none',
   },
 });
-  
+
 const MyLink = props => <Link to="/reseñas" {...props} />
 class FormReseña extends Component {
     constructor(props) {
@@ -63,7 +62,6 @@ class FormReseña extends Component {
                 <Typography variant="subheading">Reseña</Typography>
                 <textarea></textarea>
               </FormControl>
-
               <Button component={MyLink}>PUBLICAR</Button>
             </Grid>
 

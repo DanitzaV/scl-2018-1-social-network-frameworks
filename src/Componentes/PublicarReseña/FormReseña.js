@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import { Grid, InputLabel, FormControl, Input, Typography } from '@material-ui/core';
+import { Grid, FormControl, Input, Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import '../PublicarReseña/PublishReview.css';
+import {
+  BrowserRouter as ReactRouter,
+  Link,
+  Route,
+} from 'react-router-dom';
 
 
 const styles = theme => ({
@@ -12,9 +17,12 @@ const styles = theme => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  input: {
+    display: 'none',
+  },
 });
   
-
+const MyLink = props => <Link to="/reseñas" {...props} />
 class FormReseña extends Component {
     constructor(props) {
         super(props)
@@ -23,7 +31,7 @@ class FormReseña extends Component {
     render() {
         const { classes } = this.props;
         return (
-          <Grid container spacing={3}>
+          <Grid container spacing={4}>
           <Grid item xs>
           
           </Grid>
@@ -37,14 +45,26 @@ class FormReseña extends Component {
            
               <FormControl margin="normal" fullWidth>
                 <Typography variant="subheading">Imagen (opcional)</Typography>
-                <Input type="file"/>
+                <input
+                accept="image/*"
+                className={classes.input}
+                id="contained-button-file"
+                multiple
+                type="file"
+              />
+                <label htmlFor="contained-button-file">
+                  <Button variant="contained" component="span" className={classes.button}>
+                    Upload
+                  </Button>
+                </label>
               </FormControl>
-            
-           
+                      
               <FormControl margin="normal" fullWidth>
                 <Typography variant="subheading">Reseña</Typography>
                 <textarea></textarea>
               </FormControl>
+
+              <Button component={MyLink}>PUBLICAR</Button>
             </Grid>
 
             <Grid item xs>

@@ -32,7 +32,7 @@ export default class Router extends Component{
                   <Route path="/home" component={Muro}></Route>
                   <Route path="/login" component={Login}></Route>
                   <Route path="/registro" component={Login}></Route>
-                  <Route path="/publicar-reseña" component={PublicarReseña}></Route>
+                  <Route path="/publicarReseña" component={PublicarReseña}></Route>
                   <Route path="/reseñas" component={Reseñas}></Route>
 
               </App>

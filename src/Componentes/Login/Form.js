@@ -43,7 +43,7 @@ class Formulario extends Component {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-              />
+                />
             </FormControl>
             <ReactRouter>
             
@@ -51,17 +51,16 @@ class Formulario extends Component {
             <div>
             <Route path="/login" exac render={()=> {
               return (<div>
-                <Typography>No tienes cuenta <Link to="/registro">Regritrate</Link></Typography>
+                <Typography>No tienes cuenta <Link to="/registro">Registrate</Link></Typography>
                 
                 <Button
                   type="submit"
                   fullWidth
                   variant="raised"
                   color="primary"
-
                 >
                   Inicia Sesion
-            </Button>
+                </Button>
               </div>
                 
               )

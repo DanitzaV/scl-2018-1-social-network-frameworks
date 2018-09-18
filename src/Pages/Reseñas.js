@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import Tipography from '../Componentes/PublicarReseña/Title';
+import '../Componentes/ReseñasPublicadas/reseñas.css';
 
 class Reseñas extends Component {
     render() {
-        return ( 
-            <h1>dd</h1>
+        return (
+            <div className="FondoReseñas">  
+            <Tipography titulo="Tienda" />
+            </div>
         )
     }
 }

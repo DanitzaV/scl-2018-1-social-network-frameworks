@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 import 'typeface-roboto';
+import SvgIcon from '@material-ui/core/SvgIcon';
 
 const styles = {
   row: {
@@ -17,6 +18,14 @@ const styles = {
   },
 };
 
+function StoreIcon(props) {
+    return (
+      <SvgIcon {...props}>
+        <path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z" />
+      </SvgIcon>
+    );
+  }
+
 class Title extends Component {
     constructor(props) {
         super(props)
@@ -24,16 +33,18 @@ class Title extends Component {
 
     render() {
         return (
-            <Grid container direction="column"
-                justify="left"
-                alignItems="left" spacing={2} >
-                <Grid item xs ></Grid>
-                <Grid item xs={8} sm={6} md={6} lg={6}>
-                    <Typography variant="title">{this.props.titulo}</Typography>
+            <Grid
+            container
+            justify="left"
+            alignItems="left"
+            spacing={2}>
+                <Grid item xs={1}>
+                <StoreIcon className="storeIcon"/>
                 </Grid>
-                <Grid item xs></Grid>
-            </Grid>
-            
+                <Grid item xs={1}>
+                <Typography variant="title">{this.props.titulo}</Typography>
+                </Grid>
+                </Grid>         
         )
     }
 }

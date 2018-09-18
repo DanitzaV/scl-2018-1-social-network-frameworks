@@ -22,6 +22,7 @@ const styles = theme => ({
 });
 
 const MyLink = props => <Link to="/reseñas" {...props} />
+
 class FormReseña extends Component {
     constructor(props) {
         super(props)

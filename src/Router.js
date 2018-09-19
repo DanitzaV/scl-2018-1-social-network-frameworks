@@ -5,36 +5,45 @@ import Muro from './Pages/Muro';
 import Login from './Pages/Login';
 import PublicarReseña from './Pages/PublicarReseña';
 import Reseñas from './Pages/Reseñas';
+import app from './base';
+import RegistroFB from './Pages/RegistroFB';
 
 
 
-let singIn = false;
+
 export default class Router extends Component{
     constructor(){
         super();
-       
+     
+      this.state = {
+        user: null
+      }
+    }
+
+    componentDidMount(){
+     return app.auth().onAuthStateChanged((user) => {
+      console.log(user)
+       user ? this.setState({user: user})  : this.setState({user: null})
+      })
     }
     
-    SingIn = () => {
-        if(singIn === true){
-            return <Redirect to="/home" />
-        }else{
-            return <Redirect to="/login"/>
-        }
-    } 
-    
+   
+
     render(){
         
       return(
           <ReactRouter>
               <App>
-                  <Route exac path="/" component={this.SingIn} ></Route>
-                  <Route path="/home" component={Muro}></Route>
+                  <Route path="/" component={() => {
+                return this.state.user !== null ? <Redirect to="/home"></Redirect> : <Redirect to="/login"></Redirect>
+                  
+                  }}></Route>
                   <Route path="/login" component={Login}></Route>
-                  <Route path="/registro" component={Login}></Route>
-                  <Route path="/publicarReseña" component={PublicarReseña}></Route>
+                  <Route path="/home" component={Muro}></Route>
+                  <Route path="/registro" component={RegistroFB}></Route>
+                  <Route path="/publicar-reseña" component={PublicarReseña}></Route>
                   <Route path="/reseñas" component={Reseñas}></Route>
-
+                    
               </App>
           </ReactRouter>
       )

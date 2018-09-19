@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import './../Componentes/Login/Login.css'
-import Formulario from './../Componentes/Login/Form';
 import {Grid, Button, Input} from '@material-ui/core';
 import Title from './../Componentes/Title/Title';
 import './../Componentes/Login/Login.css'
 import logo from './../img/queen.png';
 import app from './../base';
-import { Link, Redirect } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
-class Login extends Component {
+class RegistroFB extends Component {
     constructor(props){
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,9 +17,9 @@ class Login extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-       app.auth().signInWithEmailAndPassword(this.correo.current.value, this.contraseña.current.value)
-    .then((user) => {
-        
+     app.auth().createUserWithEmailAndPassword(this.correo.current.value, this.contraseña.current.value)
+    .then(() => {
+        console.log("Usuario creado con éxito");
      })
     .catch((error) => {
         console.log("Error de firebase > Código > "+error.code);
@@ -30,6 +29,7 @@ class Login extends Component {
       }
 
     render(){
+
         return(
             <div id="fondologin" >
                 <Title titulo="LOVE YOUR BODY" imagen={logo} ></Title>
@@ -46,8 +46,10 @@ class Login extends Component {
                             <input required type="password" ref={this.contraseña} />
                             </label>
                             <input type="submit" value="Submit" />
-
-                           <Link to="/registro">Registro</Link>
+                            
+                           <Link to="/login">login</Link>
+                            
+                            
                         </form>
                     </Grid>
                     <Grid item xs />
@@ -59,4 +61,4 @@ class Login extends Component {
 }
 
 
-export default Login;
+export default RegistroFB;

@@ -5,6 +5,7 @@ import Muro from './Pages/Muro';
 import Login from './Pages/Login';
 import PublicarReseña from './Pages/PublicarReseña';
 import Reseñas from './Pages/Reseñas';
+import UserProfile from './Pages/Perfil';
 import app from './base';
 import RegistroFB from './Pages/RegistroFB';
 
@@ -43,6 +44,7 @@ export default class Router extends Component{
                   <Route path="/registro" component={RegistroFB}></Route>
                   <Route path="/publicar-reseña" component={PublicarReseña}></Route>
                   <Route path="/reseñas" component={Reseñas}></Route>
+                  <Route path="/perfil" component={UserProfile}></Route>
                     
               </App>
           </ReactRouter>

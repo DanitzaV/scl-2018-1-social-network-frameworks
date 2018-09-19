@@ -7,6 +7,7 @@ import {
   Link,
   Route,
 } from 'react-router-dom';
+import app from '../../base';
 
 
 const styles = theme => ({

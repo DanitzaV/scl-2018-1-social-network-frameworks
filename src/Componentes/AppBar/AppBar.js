@@ -89,6 +89,8 @@ const styles = theme => ({
   }
 });
 
+const link = props => <Link to="/perfil" {...props} />
+
 class PrimarySearchAppBar extends React.Component {
   state = {
     anchorEl: null,
@@ -178,7 +180,7 @@ class PrimarySearchAppBar extends React.Component {
         <MenuItem onClick={this.handleProfileMenuOpen}>
           <IconButton color="inherit">
             <AccountCircle />
-          </IconButton>
+          </IconButton >
           <p>Profile</p>
         </MenuItem>
       </Menu>

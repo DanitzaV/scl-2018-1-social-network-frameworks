@@ -37,7 +37,7 @@ class Title extends Component {
             container
             justify="left"
             alignItems="left"
-            spacing={2}>
+            spacing={1}>
                 <Grid item xs={1}>
                 <StoreIcon className="storeIcon"/>
                 </Grid>

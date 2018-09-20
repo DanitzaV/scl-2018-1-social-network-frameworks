@@ -6,8 +6,10 @@ import AppBar from '../Componentes/AppBar/AppBar';
 class UserProfile extends Component {
     render() {
         return (
-            <AppBar />
-            
+            <div>
+                <AppBar />
+                <h1>Perfil</h1>
+            </div>
         )
     }
 }

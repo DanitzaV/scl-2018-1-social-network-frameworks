@@ -18,6 +18,11 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import app from './../../base';
 import { Redirect } from 'react-router-dom';
+import {
+  BrowserRouter as ReactRouter,
+  Link,
+  Route,
+} from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -89,6 +94,9 @@ const styles = theme => ({
   }
 });
 
+const toUserProfile = props => <Link to="/perfil" {...props} />
+const toReviews= props => <Link to="/reseñas" {...props} />
+const toEvents = props => <Link to="/eventos" {...props} />
 
 class PrimarySearchAppBar extends React.Component {
   state = {
@@ -145,7 +153,7 @@ class PrimarySearchAppBar extends React.Component {
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
-        <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+        <MenuItem onClick={this.handleClose} component={toUserProfile}>Perfil</MenuItem>
         <MenuItem onClick={this.handleClose}>My account</MenuItem>
         <MenuItem onClick={this.cerrarSesion}>Cerar sesion</MenuItem>
        
@@ -159,8 +167,10 @@ class PrimarySearchAppBar extends React.Component {
         open={isMenuOpenitem}
         onClose={this.handleMenuClose_MenuClose}
       >
-        <MenuItem onClick={this.handleMenuClose_MenuClose}>aqui ponemos los links</MenuItem>
-        <MenuItem onClick={this.handleMenuClose_MenuClose}>My account</MenuItem>
+      
+        <MenuItem onClick={this.handleMenuClose_MenuClose} component={toReviews}>Reseñas de tiendas</MenuItem>
+        <MenuItem onClick={this.handleMenuClose_MenuClose} component={toEvents}>Eventos</MenuItem>
+        <MenuItem onClick={this.handleMenuClose_MenuClose}>Usuarios?</MenuItem>
         
        
       </Menu>

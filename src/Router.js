@@ -6,6 +6,7 @@ import Login from './Pages/Login';
 import PublicarReseña from './Pages/PublicarReseña';
 import Reseñas from './Pages/Reseñas';
 import UserProfile from './Pages/Perfil';
+import Eventos from './Pages/Eventos';
 import app from './base';
 import RegistroFB from './Pages/RegistroFB';
 
@@ -45,6 +46,7 @@ export default class Router extends Component{
                   <Route path="/publicar-reseña" component={PublicarReseña}></Route>
                   <Route path="/reseñas" component={Reseñas}></Route>
                   <Route path="/perfil" component={UserProfile}></Route>
+                  <Route path="/eventos" component={Eventos}></Route>
                     
               </App>
           </ReactRouter>

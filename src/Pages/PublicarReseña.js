@@ -13,6 +13,7 @@ class PublicarReseña extends Component {
     render() {
         return (
             <div className="FondoPublicarReseñas">
+                <AppBar />
                 <Tipography titulo="Tienda" />
                 <FormReseña />
             </div>

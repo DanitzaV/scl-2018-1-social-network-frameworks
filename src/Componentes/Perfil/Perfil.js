@@ -3,12 +3,26 @@ import app from '../../base';
 
 class Perfil extends Component {
     constructor(props) {
-        super(props); 
+        super(props);
+        this.state = {
+            email: 0
+        } 
+    }
+
+    componentWillMount() {
+        return app.auth().onAuthStateChanged((user) => {
+            console.log(user);
+            this.setState({
+                email: user.email
+            });
+        });          
     }
 
     render() {
         return (
-            <h1>ed</h1>
+            <div>
+                <h1>Email: {this.state.email}</h1>
+            </div>
         )
     }
 };

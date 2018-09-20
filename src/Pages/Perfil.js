@@ -8,6 +8,7 @@ class UserProfile extends Component {
         return (
             <div>
                 <AppBar />
+                <Perfil />
                 <h1>Perfil</h1>
             </div>
         )

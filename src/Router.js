@@ -43,7 +43,7 @@ export default class Router extends Component{
                   <Route path="/login" component={Login}></Route>
                   <Route path="/home" component={Muro}></Route>
                   <Route path="/registro" component={RegistroFB}></Route>
-                  <Route path="/publicar-reseña" component={PublicarReseña}></Route>
+                  <Route path="/publicarreseña" component={PublicarReseña}></Route>
                   <Route path="/reseñas" component={Reseñas}></Route>
                   <Route path="/perfil" component={UserProfile}></Route>
                   <Route path="/eventos" component={Eventos}></Route>

@@ -9,7 +9,6 @@ class UserProfile extends Component {
             <div>
                 <AppBar />
                 <Perfil />
-                <h1>Perfil</h1>
             </div>
         )
     }

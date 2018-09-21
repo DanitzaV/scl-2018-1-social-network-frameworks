@@ -26,7 +26,12 @@ const MyLink = props => <Link to="/reseñas" {...props} />
 
 class FormReseña extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+
+        this.state = {
+          store: '',
+          review: ''
+        }
       }
 
     render() {
@@ -40,7 +45,7 @@ class FormReseña extends Component {
             
               <FormControl margin="normal" fullWidth>
                 <Typography variant="subheading">Nombre de la tienda</Typography>
-                <Input type="text"/> 
+                <Input type="text" ref={this.state.store} onChange={this.value.bind(this)}/> 
               </FormControl>
            
            
@@ -62,9 +67,9 @@ class FormReseña extends Component {
                       
               <FormControl margin="normal" fullWidth>
                 <Typography variant="subheading">Reseña</Typography>
-                <textarea></textarea>
+                <textarea ref={this.state.review} onChange={this.value.bind(this)}></textarea>
               </FormControl>
-              <Button className="btnForm" component={MyLink}>PUBLICAR</Button>
+              <Button onClick={this.saveReview.bind(this)} className="btnForm">PUBLICAR</Button>
             </Grid>
 
             <Grid item xs>
@@ -73,6 +78,18 @@ class FormReseña extends Component {
         </Grid>
         )
     }
+
+    value = (e) => {
+      this.setState({
+        store: e.target.value,
+        review: e.target.value
+      });
+    } 
+
+    saveReview = () => {
+      console.log("store name: "+this.state.store)
+      console.log("review: "+ this.state.review)
+    };
 };
 
 

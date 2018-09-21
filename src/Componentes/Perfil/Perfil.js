@@ -5,7 +5,9 @@ class Perfil extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: 0
+            email: 0,
+            name: '',
+            phone: ''
         } 
     }
 
@@ -22,6 +24,8 @@ class Perfil extends Component {
         return (
             <div>
                 <h1>Email: {this.state.email}</h1>
+                <input type="text" ref={this.state.name}/>
+                <input type="number" ref={this.state.phone}/>
             </div>
         )
     }

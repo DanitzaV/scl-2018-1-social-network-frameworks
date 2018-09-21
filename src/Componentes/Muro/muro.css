@@ -7,3 +7,6 @@
 .cardpost{
     padding: 5em;
 }
+.btnNone{
+    display: none;
+}

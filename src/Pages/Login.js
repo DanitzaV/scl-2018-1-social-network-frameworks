@@ -43,12 +43,10 @@ class Login extends Component {
   
     render () {
         return (
-            <div id="fondologin" >
-                <Title titulo="LOVE YOUR BODY" imagen={logo} ></Title>
-                <Grid container alignItems="center"  >
-                    <Grid item xs >
-
-                    </Grid>
+                <Grid container direction="column"
+                    justify="center"
+                    alignItems="center" id="fondologin">
+                    <Title titulo="LOVE YOUR BODY" imagen={logo} ></Title>
                     <Grid item xs={8} sm={6} md={6} lg={6} >
                         <form onSubmit={this.handleSubmit}>
                             <FormControl margin="normal" required fullWidth>
@@ -65,18 +63,15 @@ class Login extends Component {
                                     onChange={this.handlePasswordChange}
                                 />
                             </FormControl>
-                            <Button item variant="raised" color="primary" type="submit">Inicia Sesion</Button>
                             
-
+                            <Button  variant="raised" color="primary" type="submit" className="btnLogin">Inicia Sesion</Button>
                         </form>
 
                     </Grid>
-                    <Grid item xs >
 
-                    </Grid>
                 </Grid>
 
-            </div>
+           
 
         );
     }

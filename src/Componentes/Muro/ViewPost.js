@@ -25,7 +25,7 @@ class ViewPost extends Component {
           firebase.database().ref('postuser')
             .on('child_added', (newPost) => {
               console.log(newPost.val())
-              let message = { text: newPost.val().text, id: Date.now(),user: newPost.val().creatorcorreo, year: newPost.val().year };
+              let message = { text: newPost.val().text, id: Date.now(),user: newPost.val().creatorcorreo, year: newPost.val().year , picture: newPost.val().picture};
       this.setState({ post: [message].concat(this.state.post) });
             })
         }
@@ -41,7 +41,7 @@ class ViewPost extends Component {
              
               
               <Grid item xs={12} sm={6} lg={5} xl={6} style={{padding: 17}} >
-                <Cardpost texto={e.text} user={e.user} horario={e.year} ></Cardpost>
+                <Cardpost texto={e.text} user={e.user} horario={e.year} imagen={e.picture} ></Cardpost>
               </Grid>
              
              

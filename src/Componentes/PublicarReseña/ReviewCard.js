@@ -9,6 +9,8 @@ import Typography from '@material-ui/core/Typography';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
+import { Grid } from '@material-ui/core';
+
 
 const styles = theme => ({
   card: {
@@ -35,6 +37,9 @@ const styles = theme => ({
     height: 38,
     width: 38,
   },
+  rev: {
+    marginTop: 10
+  },
 });
 
 class MediaControlCard extends Component {
@@ -45,24 +50,42 @@ class MediaControlCard extends Component {
     render() { 
         const { classes } = this.props;
   return (
+    <Grid container spacing={4}>
+      <Grid item xs>
+
+      </Grid>
+
+      <Grid item xs={12}> 
     <Card className={classes.card}>
+    <Grid item xs={12}> 
       <CardMedia
         className={classes.cover}
         image= {this.props.imagen}
-        title="Live from space album cover"
       />
+      </Grid>
+      <Grid items xs={12}>
       <div className={classes.details}>
         <CardContent className={classes.content}>
           <Typography variant="headline">{this.props.nombre}</Typography>
           <Typography variant="subheading" color="textSecondary">
-            Por {this.props.user} {this.props.fecha}
+            Por {this.props.user} 
           </Typography>
-          <Typography variant="body1">
+          <Typography variant="subheading" color="textSecondary">
+            {this.props.fecha}
+          </Typography>
+          <Typography variant="body1" className={classes.rev}>
             {this.props.reseña}
           </Typography>
         </CardContent>
       </div>
+      </Grid>
     </Card>
+    </Grid>
+
+    <Grid item xs>
+    
+    </Grid>
+    </Grid>
   );
 }
 }

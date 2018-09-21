@@ -1,34 +1,43 @@
 import React, {Component} from 'react';
 import './../Componentes/Login/Login.css'
-import Formulario from './../Componentes/Login/Form';
-import {Grid, Button, Input, InputLabel, FormControl} from '@material-ui/core';
+import {Grid, Button, Input, FormControl,InputLabel} from '@material-ui/core';
 import Title from './../Componentes/Title/Title';
 import './../Componentes/Login/Login.css'
 import logo from './../img/queen.png';
 import app from './../base';
-import { Link, Redirect } from 'react-router-dom';
-
+import {Link} from 'react-router-dom';
+import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 class Login extends Component {
-
     constructor () {
-      super();
-      this.state = {
-        email: '',
-        password: ''
+        super();
+        this.state = {
+          email: '',
+          password: '',
+          showPassword: false,
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleEmailChange = this.handleEmailChange.bind(this);
+      
+    
+      }
+      handleChange = prop => event => {
+        this.setState({ [prop]: event.target.value });
       };
-      this.handleSubmit = this.handleSubmit.bind(this);
-      this.handleEmailChange = this.handleEmailChange.bind(this);
-      this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    }
     
-    handleEmailChange (evt) {
-      this.setState({ email: evt.target.value });
-    }
-    
-    handlePasswordChange (evt) {
-      this.setState({ password: evt.target.value });
-    }
-    handleSubmit(event) {
+      handleClickShowPassword = () => {
+        this.setState(state => ({ showPassword: !state.showPassword }));
+      };
+      
+      handleEmailChange (evt) {
+        this.setState({ email: evt.target.value });
+      }
+      handleSubmit(event) {
         event.preventDefault();
        app.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
     .then((user) => {
@@ -40,6 +49,7 @@ class Login extends Component {
      });
         
       }
+
   
     render () {
         return (
@@ -48,23 +58,35 @@ class Login extends Component {
                     alignItems="center" id="fondologin">
                     <Title titulo="LOVE YOUR BODY" imagen={logo} ></Title>
                     <Grid item xs={8} sm={6} md={6} lg={6} >
-                        <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={this.handleSubmit}>
                             <FormControl margin="normal" required fullWidth>
                                 <InputLabel htmlFor="email">Email Address</InputLabel>
                                 <Input id="email" type="email" name="email" autoComplete="email" onChange={this.handleEmailChange} />
                             </FormControl>
-                            <FormControl margin="normal" required fullWidth>
-                                <InputLabel htmlFor="password" >Password</InputLabel>
-                                <Input
-                                    name="password"
-                                    type="password"
-                                    id="password"
-                                    autoComplete="current-password"
-                                    onChange={this.handlePasswordChange}
-                                />
-                            </FormControl>
                             
-                            <Button  variant="raised" color="primary" type="submit" className="btnLogin">Inicia Sesion</Button>
+                        <FormControl margin="normal" required fullWidth>
+                            <InputLabel htmlFor="adornment-password">Password</InputLabel>
+                            <Input
+                                id="adornment-password"
+                                type={this.state.showPassword ? 'text' : 'password'}
+                                value={this.state.password}
+                                autoComplete="current-password"
+                                onChange={this.handleChange('password')}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="Toggle password visibility"
+                                            onClick={this.handleClickShowPassword}
+                                        >
+                                            {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                            />
+                        </FormControl>
+                            <p>No tengo cuenta, <Link to="/registro">Registrate</Link></p>
+                            <Button  variant="raised" color="primary" fullWidth type="submit" className="btnLogin">Inicia Sesion</Button>
+                            
                         </form>
 
                     </Grid>

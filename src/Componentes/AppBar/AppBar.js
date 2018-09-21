@@ -23,6 +23,7 @@ import {
   Link,
   Route,
 } from 'react-router-dom';
+import './appbar.css';
 
 const styles = theme => ({
   root: {
@@ -111,7 +112,7 @@ class PrimarySearchAppBar extends React.Component {
   handleMenuClose = () => {
     this.setState({ anchorEl: null });
     this.handleMobileMenuClose();
-    this.handleMenuClose_Menu();
+    this.handleMenuClose_MenuClose();
   };
 
   handleMobileMenuOpen = event => {
@@ -152,6 +153,7 @@ class PrimarySearchAppBar extends React.Component {
         transformOrigin={{ vertical: "top", horizontal: "right" }}
         open={isMenuOpen}
         onClose={this.handleMenuClose}
+        
       >
         <MenuItem onClick={this.handleClose} component={toUserProfile}>Perfil</MenuItem>
         <MenuItem onClick={this.handleClose}>My account</MenuItem>
@@ -161,6 +163,7 @@ class PrimarySearchAppBar extends React.Component {
     );
     const renderMenuitem = (
       <Menu
+      className="menuitem"
         menuitem={menuitem}
         anchorOrigin={{ vertical: "top", horizontal: "left" }}
         transformOrigin={{ vertical: "top", horizontal: "left" }}
@@ -220,15 +223,15 @@ class PrimarySearchAppBar extends React.Component {
     return (
       <div className={classes.root}>
         <AppBar position="static">
-          <Toolbar>
-          <MenuItem >
+          <Toolbar className="menuitem">
+          <MenuItem className="menuitem" >
           <IconButton
-              className={classes.menuButton}
+          className="menuitem"
               color="inherit"
               aria-label="Open drawer"
               onClick={this.handleMenuClose_MenuOpen}
             >
-              <MenuIcon />
+              <MenuIcon className="menuitem"/>
             </IconButton>
         </MenuItem>
             

@@ -10,6 +10,8 @@ import Eventos from './Pages/Eventos';
 import app from './base';
 import RegistroFB from './Pages/RegistroFB';
 
+import firebase from './base';
+
 
 
 
@@ -23,10 +25,9 @@ export default class Router extends Component{
     }
 
     componentDidMount(){
-     return app.auth().onAuthStateChanged((user) => {
-      console.log(user)
-       user ? this.setState({user: user})  : this.setState({user: null})
-      })
+     return  firebase.auth().onAuthStateChanged((user) => {
+      user ? this.setState({user: user})  : this.setState({user: null})
+     })
     }
     
    

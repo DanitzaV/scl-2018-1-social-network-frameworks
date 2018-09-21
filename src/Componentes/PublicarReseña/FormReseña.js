@@ -88,7 +88,7 @@ class FormReseña extends Component {
 
     saveReview = () => {
       console.log("store name: "+this.state.store)
-      console.log("review: "+ this.state.review)
+      console.log("review: "+this.state.review)
     };
 };
 

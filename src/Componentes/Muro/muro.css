@@ -1,0 +1,12 @@
+.card{
+    margin-bottom: 1em;
+}
+.root{
+    flex-grow: 1px;
+}
+.cardpost{
+    padding: 5em;
+}
+.btnNone{
+    display: none;
+}

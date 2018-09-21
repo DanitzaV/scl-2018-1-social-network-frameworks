@@ -1,32 +1,49 @@
 import React, {Component} from 'react';
 // import { AppBar, Bar, Grid } from '@material-ui/core';
 import AppBar from './../Componentes/AppBar/AppBar';
-import { Grid } from '@material-ui/core';
+import { Grid, TextField, Button, Paper } from '@material-ui/core';
+import PostMuro from './../Componentes/Muro/PostMuro';
+import Title from '../Componentes/Title/Title';
+import ViewPost from './../Componentes/Muro/ViewPost';
+import { withStyles } from '@material-ui/core/styles';
+import './../Componentes/Muro/muro.css'
 
-class Muro extends Component {
+const styles = theme => ({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      padding: theme.spacing.unit * 2,
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+    },
+  });
+  
+  function Muro(props) {
+    const { classes } = props;
+    return(
+      <div className="root">
+        <AppBar ></AppBar>
+        <PostMuro></PostMuro>
+        
+        <Title titulo="New Post"></Title>          
+        <ViewPost></ViewPost>
+    </div>
+    )
+  }  
+// class Muro extends Component {
 
-    constructor(){
-        super();
+//     constructor(){
+//         super();
+       
+       
+//     }
+   
 
-        this.state = {
-            nombre: null
-        }
-    }
-    render(){
-        return(
-            <div>
-               <AppBar ></AppBar>
-               <Grid container spacing={8} >
-                <Grid item xs />               
-                <Grid item xs={8} sm={6} md={6} lg={6} >
-                    <h1>{}</h1>
-                </Grid>
-                <Grid item xs />
-            </Grid>
-            </div>
-        )
-    }
-}
+//     render(){
+        
+//     }
+// }
 
 
-export default Muro;
+export default withStyles(styles)(Muro);

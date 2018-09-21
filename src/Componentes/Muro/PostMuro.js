@@ -49,39 +49,19 @@ class PostMuro extends Component {
     const metadata = { // datos sobre el archivo que estamos subiendo
       contentType: photoFile.type// tipo de archivo que estamos subiendo
     };
-    // va a retornar una tarea= task (objeto)
+    
     const task = firebase.storage().ref('imagesPost') //Corresponden a las carpetas que tenemos dentro del storage
       .child(fileName)
       .put(photoFile, metadata);
-      console.log(task.snapshot.downloadURL)
 
     task.then(snapshot => snapshot.ref.getDownloadURL())  //obtenemos la url de descarga (de la imagen)
       .then(url => {
-        console.log("URL del archivo > " + url);
         this.setState({
           img: url
         })
-        const currentUsers = firebase.auth().currentUser;
-        // cont.innerHTML += `
-        // <img style="width: 25%; display: flex" src="${currentUsers.photoURL}">
-        // <p> ${currentUsers.displayName}</p>
-        // <img style="width: 200px; display: flex" src="${url}">
-        // `; 
+        console.log(this.state.img)
       });
 
-    // const file = event.target.files[0]
-    // console.log(file)
-    // const storageRef = firebase.storage().ref(`pictures/${file.name}`)
-    // const task = storageRef.put(file)
-    // task.on('state_changed', (snapshot) => {
-
-    // }, (error) => {
-    //   console.error(error.message)
-    // }, () => {
-    //   // Upload complete
-    //   console.log(task.snapshot.downloadURL)
-
-    // })
   }
     
       render() {

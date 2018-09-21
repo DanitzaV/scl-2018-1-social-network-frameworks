@@ -48,18 +48,17 @@ class MediaControlCard extends Component {
     <Card className={classes.card}>
       <CardMedia
         className={classes.cover}
-        image="http://pm1.narvii.com/6523/ac2030ac7e56ece0b30c50ca7058e39739ea7d66_00.jpg"
+        image= {this.props.imagen}
         title="Live from space album cover"
       />
       <div className={classes.details}>
         <CardContent className={classes.content}>
-          <Typography variant="headline">Live From Space</Typography>
+          <Typography variant="headline">{this.props.nombre}</Typography>
           <Typography variant="subheading" color="textSecondary">
-            Por Valeria Cossio 12/09/2018
+            Por {this.props.user} {this.props.fecha}
           </Typography>
           <Typography variant="body1">
-            Holitas como esta todo el mundo Holitas como esta todo el mundo
-            Holitas como esta todo 
+            {this.props.reseña}
           </Typography>
         </CardContent>
       </div>

@@ -100,7 +100,7 @@ class FormReseña extends Component {
           <form onSubmit={this.handleSubmit}> 
           <Grid container spacing={4}>
           <Grid item xs>
-          
+          <Link to='/reseñas'>RESEÑAS</Link>
           </Grid>
           <Grid  className="FormReseña" item xs={8} sm={6} md={6} lg={6}> 
             

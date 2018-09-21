@@ -23,6 +23,7 @@ class ViewPost extends Component {
     }
         componentWillMount(){
           firebase.database().ref('postuser')
+            .limitToLast(10)
             .on('child_added', (newPost) => {
               console.log(newPost.val())
               let message = { text: newPost.val().text, id: Date.now(),user: newPost.val().creatorcorreo, year: newPost.val().year , picture: newPost.val().picture};

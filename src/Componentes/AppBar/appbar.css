@@ -1,3 +1,7 @@
+.AppBar {
+    position: relative;
+}
+
 .menuitem{
     top: 0 !important;
 }

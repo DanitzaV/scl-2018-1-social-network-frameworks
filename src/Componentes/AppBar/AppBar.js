@@ -222,7 +222,7 @@ class PrimarySearchAppBar extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar className="AppBar">
           <Toolbar className="menuitem">
           <MenuItem className="menuitem" >
           <IconButton

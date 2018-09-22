@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-import app from './../base';
+import Perfil from '../Componentes/Perfil/Perfil';
 import AppBar from '../Componentes/AppBar/AppBar';
 
-class PublicarEventos extends Component {
+
+class UserProfile extends Component {
     render() {
         return (
             <div>
                 <AppBar />
-                <h1>Publica eventos</h1>
+                <Perfil />
             </div>
         )
     }
 }
+
+export default UserProfile;

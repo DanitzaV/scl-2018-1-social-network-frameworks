@@ -15,7 +15,8 @@ class Reseñas extends Component {
     render() {
         return (
             <div className="FondoReseñas">
-            <AppBar />          
+            <AppBar />
+            <h1>hola"!</h1>          
             <Tipography titulo="Tienda" /> 
             <ShowReviews />
             </div>

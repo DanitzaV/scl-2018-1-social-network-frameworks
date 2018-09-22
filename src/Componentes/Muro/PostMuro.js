@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextField, Button, Input } from '@material-ui/core';
+import { TextField, Button, Input, Grid, Paper} from '@material-ui/core';
 
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
@@ -25,8 +25,9 @@ class PostMuro extends Component {
       }
     
       handleSubmit(event) {
+        event.preventDefault();
         const currentUser = firebase.auth().currentUser;
-        console.log(currentUser);
+        
             const horas = new Date().toLocaleString();
 
             const newMessageKey = firebase.database().ref().child('postuser').push().key;
@@ -40,7 +41,7 @@ class PostMuro extends Component {
             text : this.state.value
         });
 
-        event.preventDefault();
+        
       }
   handleOnChange(event) {
     event.preventDefault();
@@ -67,14 +68,26 @@ class PostMuro extends Component {
       render() {
         return (
           <form onSubmit={this.handleSubmit}>
-            <Input value={this.state.value} onChange={this.handleChange}/>
-            <input accept="image/*" className="btnNone" id="icon-button-file" type="file" onChange={this.handleOnChange} />
-            <label htmlFor="icon-button-file">
-              <IconButton color="primary"  component="span">
-                <PhotoCamera />
-              </IconButton>
-            </label>
-            <Button variant="raised" type="submit">Get value</Button>
+            <Grid container spacing={18} justify="center" style={{ padding: 20 }}>
+              <Paper style={{ width: 600 }}>
+                <Grid container spacing={18} justify="center" style={{ paddingTop: 20, paddingBottom: 20 }}>
+
+                  <Grid item>
+                    <Input placeholder="Escribe aqui" value={this.state.value} onChange={this.handleChange} fullWidth />
+                  </Grid>
+                  <Grid item >
+                    <input accept="image/*" className="btnNone" id="icon-button-file" type="file" onChange={this.handleOnChange} />
+                    <label htmlFor="icon-button-file">
+                      <IconButton color="primary" component="span">
+                        <PhotoCamera ali />
+                      </IconButton>
+                    </label>
+                    <Button variant="raised" color="primary" type="submit">Publicar</Button>
+                  </Grid>
+
+                </Grid>
+              </Paper>
+            </Grid>
           </form>
         );
       }

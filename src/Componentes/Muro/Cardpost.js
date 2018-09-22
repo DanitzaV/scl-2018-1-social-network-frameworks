@@ -16,7 +16,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-
+import firebase from './../../base';
 const styles = theme => ({
   
   media: {
@@ -34,8 +34,11 @@ const styles = theme => ({
 class RecipeReviewCard extends React.Component {
     constructor(props){
         super(props)
+        this.state = {
+          avatar: ''
+        }
     }
-
+   
 
   render() {
     const { classes } = this.props;
@@ -46,7 +49,7 @@ class RecipeReviewCard extends React.Component {
         <CardHeader
           avatar={
             <Avatar aria-label="Recipe" className={classes.avatar}>
-              R
+              {this.props.avatar.charAt(0).toUpperCase()}
             </Avatar>
           }
           action={

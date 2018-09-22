@@ -17,12 +17,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import app from './../../base';
-import { Redirect } from 'react-router-dom';
-import {
-  BrowserRouter as ReactRouter,
-  Link,
-  Route,
-} from 'react-router-dom';
+import { Redirect,Link } from 'react-router-dom';
 import './appbar.css';
 
 const styles = theme => ({
@@ -98,6 +93,7 @@ const styles = theme => ({
 const toUserProfile = props => <Link to="/perfil" {...props} />
 const toReviews= props => <Link to="/reseñas" {...props} />
 const toEvents = props => <Link to="/eventos" {...props} />
+const toHome = props => <Link to="/home" {...props}/>
 
 class PrimarySearchAppBar extends React.Component {
   state = {
@@ -155,7 +151,7 @@ class PrimarySearchAppBar extends React.Component {
         onClose={this.handleMenuClose}
         
       >
-        <MenuItem onClick={this.handleClose} component={toUserProfile}>Perfil</MenuItem>
+      <MenuItem onClick={this.handleClose} component={toUserProfile}>Perfil</MenuItem>
         <MenuItem onClick={this.handleClose}>My account</MenuItem>
         <MenuItem onClick={this.cerrarSesion}>Cerar sesion</MenuItem>
        
@@ -165,15 +161,15 @@ class PrimarySearchAppBar extends React.Component {
       <Menu
       className="menuitem"
         menuitem={menuitem}
-        anchorOrigin={{ vertical: "top", horizontal: "left" }}
-        transformOrigin={{ vertical: "top", horizontal: "left" }}
+        anchorOrigin={{ vertical: "top", horizontal: "left" , top: 10}}
+        transformOrigin={{ vertical: "top", horizontal: "left", top: 10 }}
         open={isMenuOpenitem}
         onClose={this.handleMenuClose_MenuClose}
       >
-      
-        <MenuItem onClick={this.handleMenuClose_MenuClose} component={toReviews}>Reseñas de tiendas</MenuItem>
-        <MenuItem onClick={this.handleMenuClose_MenuClose} component={toEvents}>Eventos</MenuItem>
-        <MenuItem onClick={this.handleMenuClose_MenuClose}>Usuarios?</MenuItem>
+        <MenuItem onClick={this.handleClose} component={toHome}>Muro</MenuItem>
+        <MenuItem onClick={this.handleClose} component={toReviews}>Reseñas de tiendas</MenuItem>
+        <MenuItem onClick={this.handleClose} component={toEvents}>Eventos</MenuItem>
+        <MenuItem onClick={this.handleClose}>My account</MenuItem>
         
        
       </Menu>
@@ -214,7 +210,7 @@ class PrimarySearchAppBar extends React.Component {
         <MenuItem onClick={this.handleProfileMenuOpen}>
           <IconButton color="inherit">
             <AccountCircle />
-          </IconButton >
+          </IconButton>
           <p>Profile</p>
         </MenuItem>
       </Menu>
@@ -222,7 +218,7 @@ class PrimarySearchAppBar extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar className="AppBar">
+        <AppBar position="static">
           <Toolbar className="menuitem">
           <MenuItem className="menuitem" >
           <IconButton

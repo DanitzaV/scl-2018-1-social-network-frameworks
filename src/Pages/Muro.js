@@ -22,13 +22,13 @@ const styles = theme => ({
   function Muro(props) {
     const { classes } = props;
     return(
-      <div className="root">
+      <div className="root" >
         <AppBar ></AppBar>
         <PostMuro></PostMuro>
-        
-        <Title titulo="New Post"></Title>          
+
+        <Title titulo="New Post"></Title>
         <ViewPost></ViewPost>
-    </div>
+      </div>
     )
   }  
 // class Muro extends Component {

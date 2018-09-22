@@ -15,6 +15,7 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 class Login extends Component {
     constructor () {
+        
         super();
         this.state = {
           email: '',

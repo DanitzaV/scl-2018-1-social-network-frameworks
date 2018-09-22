@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextField, Button, Input } from '@material-ui/core';
+import { TextField, Button, Input, Grid, Paper} from '@material-ui/core';
 
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
@@ -25,8 +25,9 @@ class PostMuro extends Component {
       }
     
       handleSubmit(event) {
+        event.preventDefault();
         const currentUser = firebase.auth().currentUser;
-        console.log(currentUser);
+        
             const horas = new Date().toLocaleString();
 
             const newMessageKey = firebase.database().ref().child('postuser').push().key;
@@ -40,7 +41,7 @@ class PostMuro extends Component {
             text : this.state.value
         });
 
-        event.preventDefault();
+        
       }
   handleOnChange(event) {
     event.preventDefault();
@@ -49,52 +50,44 @@ class PostMuro extends Component {
     const metadata = { // datos sobre el archivo que estamos subiendo
       contentType: photoFile.type// tipo de archivo que estamos subiendo
     };
-    // va a retornar una tarea= task (objeto)
+    
     const task = firebase.storage().ref('imagesPost') //Corresponden a las carpetas que tenemos dentro del storage
       .child(fileName)
       .put(photoFile, metadata);
-      console.log(task.snapshot.downloadURL)
 
     task.then(snapshot => snapshot.ref.getDownloadURL())  //obtenemos la url de descarga (de la imagen)
       .then(url => {
-        console.log("URL del archivo > " + url);
         this.setState({
           img: url
         })
-        const currentUsers = firebase.auth().currentUser;
-        // cont.innerHTML += `
-        // <img style="width: 25%; display: flex" src="${currentUsers.photoURL}">
-        // <p> ${currentUsers.displayName}</p>
-        // <img style="width: 200px; display: flex" src="${url}">
-        // `; 
+        console.log(this.state.img)
       });
 
-    // const file = event.target.files[0]
-    // console.log(file)
-    // const storageRef = firebase.storage().ref(`pictures/${file.name}`)
-    // const task = storageRef.put(file)
-    // task.on('state_changed', (snapshot) => {
-
-    // }, (error) => {
-    //   console.error(error.message)
-    // }, () => {
-    //   // Upload complete
-    //   console.log(task.snapshot.downloadURL)
-
-    // })
   }
     
       render() {
         return (
           <form onSubmit={this.handleSubmit}>
-            <Input value={this.state.value} onChange={this.handleChange}/>
-            <input accept="image/*" className="btnNone" id="icon-button-file" type="file" onChange={this.handleOnChange} />
-            <label htmlFor="icon-button-file">
-              <IconButton color="primary"  component="span">
-                <PhotoCamera />
-              </IconButton>
-            </label>
-            <Button variant="raised" type="submit">Get value</Button>
+            <Grid container spacing={18} justify="center" style={{ padding: 20 }}>
+              <Paper style={{ width: 600 }}>
+                <Grid container spacing={18} justify="center" style={{ paddingTop: 20, paddingBottom: 20 }}>
+
+                  <Grid item>
+                    <Input placeholder="Escribe aqui" value={this.state.value} onChange={this.handleChange} fullWidth />
+                  </Grid>
+                  <Grid item >
+                    <input accept="image/*" className="btnNone" id="icon-button-file" type="file" onChange={this.handleOnChange} />
+                    <label htmlFor="icon-button-file">
+                      <IconButton color="primary" component="span">
+                        <PhotoCamera ali />
+                      </IconButton>
+                    </label>
+                    <Button variant="raised" color="primary" type="submit">Publicar</Button>
+                  </Grid>
+
+                </Grid>
+              </Paper>
+            </Grid>
           </form>
         );
       }

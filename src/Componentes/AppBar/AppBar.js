@@ -18,6 +18,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import app from './../../base';
 import { Redirect,Link } from 'react-router-dom';
+import MenuListComposition from './Menutoogle';
 import './appbar.css';
 
 const styles = theme => ({
@@ -91,9 +92,7 @@ const styles = theme => ({
 });
 
 const toUserProfile = props => <Link to="/perfil" {...props} />
-const toReviews= props => <Link to="/reseñas" {...props} />
-const toEvents = props => <Link to="/eventos" {...props} />
-const toHome = props => <Link to="/home" {...props}/>
+
 
 class PrimarySearchAppBar extends React.Component {
   state = {
@@ -157,23 +156,6 @@ class PrimarySearchAppBar extends React.Component {
        
       </Menu>
     );
-    const renderMenuitem = (
-      <Menu
-      className="menuitem"
-        menuitem={menuitem}
-        anchorOrigin={{ vertical: "top", horizontal: "left" , top: 10}}
-        transformOrigin={{ vertical: "top", horizontal: "left", top: 10 }}
-        open={isMenuOpenitem}
-        onClose={this.handleMenuClose_MenuClose}
-      >
-        <MenuItem onClick={this.handleClose} component={toHome}>Muro</MenuItem>
-        <MenuItem onClick={this.handleClose} component={toReviews}>Reseñas de tiendas</MenuItem>
-        <MenuItem onClick={this.handleClose} component={toEvents}>Eventos</MenuItem>
-        <MenuItem onClick={this.handleClose}>My account</MenuItem>
-        
-       
-      </Menu>
-    )
 
     const renderMobileMenu = (
       <Menu
@@ -220,16 +202,7 @@ class PrimarySearchAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar className="menuitem">
-          <MenuItem className="menuitem" >
-          <IconButton
-          className="menuitem"
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={this.handleMenuClose_MenuOpen}
-            >
-              <MenuIcon className="menuitem"/>
-            </IconButton>
-        </MenuItem>
+          <MenuListComposition></MenuListComposition>
             
             <Typography
               className={classes.title}
@@ -294,7 +267,6 @@ class PrimarySearchAppBar extends React.Component {
         </AppBar>
         {renderMenu}
         {renderMobileMenu}
-        {renderMenuitem}
       </div>
     );
   }

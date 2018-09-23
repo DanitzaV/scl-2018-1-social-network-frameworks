@@ -61,7 +61,7 @@ class MenuListComposition extends React.Component {
         >
         <MenuIcon/>
         </IconButton>
-          <Popper open={open} anchorEl={this.anchorEl} transition disablePortal>
+          <Popper open={open} anchorEl={this.anchorEl} transition disablePortal style={{zIndex: 1}}>
             {({ TransitionProps, placement }) => (
               <Grow
                 {...TransitionProps}
@@ -74,7 +74,6 @@ class MenuListComposition extends React.Component {
                       <MenuItem onClick={this.handleClose} component={toHome}>Muro</MenuItem>
                       <MenuItem onClick={this.handleClose} component={toReviews}>Reseñas de tiendas</MenuItem>
                       <MenuItem onClick={this.handleClose} component={toEvents}>Eventos</MenuItem>
-                     <Fullmessage/>
                       <MenuItem onClick={this.handleClose} component={toMessage}>Mensajes</MenuItem>
                     </MenuList>
                   </ClickAwayListener>

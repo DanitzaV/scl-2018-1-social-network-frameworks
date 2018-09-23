@@ -1,19 +1,6 @@
-.speech-bubble {
-	position: relative;
-	background: #00aabb;
-	border-radius: .4em;
-}
 
-.speech-bubble:after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	width: 0;
-	height: 0;
-	border: 23px solid transparent;
-	border-top-color: #00aabb;
-	border-bottom: 0;
-	margin-left: -23px;
-	margin-bottom: -23px;
+.shadow{
+    height: 90vh;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+    overflow-y: scroll;
 }

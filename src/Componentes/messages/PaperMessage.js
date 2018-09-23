@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+import Chip from '@material-ui/core/Chip';
 
 
 const styles = theme => ({
@@ -11,6 +13,9 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
   },
+  chip: {
+    margin: theme.spacing.unit,
+  },
 });
 
 function PaperMessage(props) {
@@ -18,15 +23,20 @@ function PaperMessage(props) {
 
   return (
     <div >
+    <Chip
+        color="primary"
+        avatar={<Avatar >{props.user.charAt(0).toUpperCase()}</Avatar>}
+        label={props.user}
+        className={classes.chip}
+        variant="outlined"
+      />
       <Paper  key={props.id} className={classes.root} elevation={1}  >
-        <Typography variant="headline" component="h3">
-          {props.user}
-        </Typography>
         <Typography component="p">
             {props.text}
         </Typography>
         <img src={props.imagen} width="200"/>
       </Paper>
+      
     </div>
   );
 }

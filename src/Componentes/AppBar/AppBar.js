@@ -18,8 +18,8 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import app from './../../base';
 import { Redirect,Link } from 'react-router-dom';
-import MenuListComposition from './Menutoogle';
 import './appbar.css';
+import ToogleMenu from "./ToogleMenu";
 
 const styles = theme => ({
   root: {
@@ -202,7 +202,7 @@ class PrimarySearchAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar className="menuitem">
-          <MenuListComposition></MenuListComposition>
+          <ToogleMenu></ToogleMenu>
             
             <Typography
               className={classes.title}

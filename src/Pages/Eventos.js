@@ -1,7 +1,6 @@
 import React, {Component} from 'react'; 
 import app from './../base';
 import AppBar from '../Componentes/AppBar/AppBar';
-
 class Eventos extends Component {
     render() {
         return (

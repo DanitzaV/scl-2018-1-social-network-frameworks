@@ -8,6 +8,7 @@ class PublicarEventos extends Component {
             <div>
                 <AppBar />
                 <h1>Publica eventos</h1>
+                
             </div>
         )
     }

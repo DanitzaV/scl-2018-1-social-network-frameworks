@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
@@ -11,6 +10,7 @@ import { withStyles } from '@material-ui/core/styles';
 import  MenuIcon  from '@material-ui/icons/Menu';
 import  IconButton  from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom';
+import Fullmessage from '../messages/Fullmessage';
 
 const styles = theme => ({
   root: {
@@ -24,6 +24,7 @@ const styles = theme => ({
 const toReviews= props => <Link to="/reseñas" {...props} />
 const toEvents = props => <Link to="/eventos" {...props} />
 const toHome = props => <Link to="/home" {...props}/>
+const toMessage= props => <Link to="/messages" {...props}/>
 
 class MenuListComposition extends React.Component {
   state = {
@@ -73,6 +74,8 @@ class MenuListComposition extends React.Component {
                       <MenuItem onClick={this.handleClose} component={toHome}>Muro</MenuItem>
                       <MenuItem onClick={this.handleClose} component={toReviews}>Reseñas de tiendas</MenuItem>
                       <MenuItem onClick={this.handleClose} component={toEvents}>Eventos</MenuItem>
+                     <Fullmessage/>
+                      <MenuItem onClick={this.handleClose} component={toMessage}>Mensajes</MenuItem>
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>

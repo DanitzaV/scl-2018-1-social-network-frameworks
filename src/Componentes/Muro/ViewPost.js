@@ -15,25 +15,33 @@ import './muro.css';
 // }
 
 class ViewPost extends Component {
-    constructor(){
-      super();
-      this.state = {
-        post: [],
-        avatar: ''
-      }
-    }
-        componentWillMount(){
-          firebase.database().ref('postuser')
-            .limitToLast(10)
-            .on('child_added', (newPost) => {
-              console.log(newPost.val())
-              let message = { text: newPost.val().text, id: Date.now(),user: newPost.val().creatorcorreo, year: newPost.val().year , picture: newPost.val().picture};
-      this.setState({ post: [message].concat(this.state.post) });
-            })
+  state = {
+    post: []
+  }
+  itemsRef = firebase.database().ref('postuser')
+  componentWillMount(){
+    this.itemsRef.on('child_added', (newPost) => {
+                console.log(newPost)
+                let message = { key: newPost.key, text: newPost.val().text, id: Date.now(),user: newPost.val().creatorcorreo, year: newPost.val().year , picture: newPost.val().picture};
+        this.setState({ post: [message].concat(this.state.post) });
+              }) 
+    // this.itemsRef.on('value', data=> {
+    //   this.setState({
+    //     items: data.val()
+    //   })
+    // })
+    console.log(this.state.post)
+  }
+  // deleteItem = (id) => {
+  //   console.log(id)
+    
+  //   // this.itemsRef.update({
+  //   //   [id]: null
+  //   // })
+  // }
+ 
 
-           
-           
-        }
+        
      
   render() {
     return (
@@ -46,7 +54,7 @@ class ViewPost extends Component {
              
               
               <Grid item xs={12} sm={6} lg={5} xl={6} style={{padding: 17}} >
-                <Cardpost texto={e.text} user={e.user} horario={e.year} imagen={e.picture} avatar={e.user} ></Cardpost>
+                <Cardpost key={e.key} id={e.key} texto={e.text} action={this.deleteItem}  user={e.user} horario={e.year} imagen={e.picture} avatar={e.user} ></Cardpost>
               </Grid>
              
              

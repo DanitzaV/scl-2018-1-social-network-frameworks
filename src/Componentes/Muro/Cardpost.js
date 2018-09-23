@@ -16,6 +16,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import DeleteIcon from '@material-ui/icons/Delete';
 import firebase from './../../base';
 const styles = theme => ({
   
@@ -37,6 +38,14 @@ class RecipeReviewCard extends React.Component {
         this.state = {
           avatar: ''
         }
+        this.deletePost = this.deletePost.bind(this);
+    }
+
+    
+    deletePost(){ 
+      const key =  firebase.database().ref(`postuser/${this.props.id}`).key
+      firebase.database().ref(`postuser/${this.props.id}`).remove();
+      document.getElementById(key).style.display = "none";
     }
    
 
@@ -45,7 +54,7 @@ class RecipeReviewCard extends React.Component {
 
     return (
         
-      <Card className={classes.card}>
+      <Card className={classes.card} id={this.props.id}>
         <CardHeader
           avatar={
             <Avatar aria-label="Recipe" className={classes.avatar}>
@@ -77,7 +86,11 @@ class RecipeReviewCard extends React.Component {
           <IconButton aria-label="Share">
             <ShareIcon />
           </IconButton>
+          <IconButton onClick={this.deletePost} aria-label="Delete"  color="secondary">
+        <DeleteIcon />
+      </IconButton>
         </CardActions>
+       
       </Card>
     );
   }

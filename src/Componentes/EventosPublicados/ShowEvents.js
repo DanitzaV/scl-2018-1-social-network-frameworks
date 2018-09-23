@@ -1,31 +1,32 @@
 import React, { Component } from 'react';
 import { Grid } from '@material-ui/core';
 import firebase from './../../base';
-import Card from './Card';
+import ImgMediaCard from './CardEvent';
 
 class ShowEvents extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             events: []
         } 
     }
 
     componentWillMount() {
-        firebase.database().ref('reviews')
-          .on('child_added', (newReview) => {
-            console.log(newReview.val())
-            let info = {
-                title: newReview.val().title,
-                description: newReview.val().description,
-                direccion: newReview.val().direction,
-                user: newReview.val().creatorcorreo,
-                fecha: newReview.val().fecha,
-                hora: newReview.val().hora,
-                picture: newReview.val().picture
+        firebase.database().ref('events')
+          .on('child_added', (newEvent) => {
+            console.log(newEvent.val())
+            let infoe = {
+                title: newEvent.val().title,
+                description: newEvent.val().description,
+                direction: newEvent.val().direction,
+                user: newEvent.val().creatorcorreo,
+                fecha: newEvent.val().date,
+                hora: newEvent.val().hour,
+                picture: newEvent.val().picture
             };
             this.setState({
-                events: [info].concat(this.state.events)
+                events: [infoe].concat(this.state.events)
             });
         });
     }
@@ -40,14 +41,15 @@ class ShowEvents extends Component {
                     return (
                         <li>
                         <Grid>
-                            <Card
+                            <ImgMediaCard
                             nombre={ele.title}
                             descripcion={ele.description}
-                            direccion={ele.direccion}
+                            direccion={ele.direction}
                             user={ele.user}
                             fecha={ele.fecha}
                             hora={ele.hora}
-                            imagen={ele.picture}/>
+                            imagen={ele.picture}
+                            />
                         </Grid>
                         </li>
                     )

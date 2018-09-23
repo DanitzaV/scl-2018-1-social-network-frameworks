@@ -8,7 +8,7 @@ import {
     Link,
     Route,
   } from 'react-router-dom';
-  import Card from '../Componentes/EventosPublicados/Card';
+  import ShowEvents from '../Componentes/EventosPublicados/ShowEvents';
 
 const aj = props => <Link to="/publicarevento" {...props} />
 
@@ -19,7 +19,7 @@ class Eventos extends Component {
                 <AppBar />
                 <Title titulo="Evento" />
                 <Button component={aj}>Publicar Evento</Button>
-                <Card />
+                <ShowEvents />
             </div>
         )
     }

@@ -86,6 +86,7 @@ const styles = theme => ({
               date: this.state.fecha,
               hour: this.state.hora,
               title: this.state.title,
+              direction: this.state.direction,
               description: this.state.description
           });
           event.preventDefault();
@@ -118,7 +119,7 @@ const styles = theme => ({
           const { classes } = this.props;
           return (
             <form onSubmit={this.handleSubmit}> 
-            <Grid container spacing={4}>
+            <Grid container spacing={24}>
             <Grid item xs>
       
             </Grid>

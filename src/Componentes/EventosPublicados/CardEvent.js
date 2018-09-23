@@ -1,5 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -51,10 +50,16 @@ function LugarIcon(props) {
   );
 }
 
-function ImgMediaCard(props) {
-  const { classes } = props;
-  return (
-    <Card className={classes.card}>
+
+class ImgMediaCard extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <Card className={classes.card}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -103,11 +108,8 @@ function ImgMediaCard(props) {
         </CardContent>
       </CardActionArea>
     </Card>
-  );
+    )
+  }
 }
-
-ImgMediaCard.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 export default withStyles(styles)(ImgMediaCard);

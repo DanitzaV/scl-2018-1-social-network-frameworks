@@ -38,16 +38,13 @@ class Title extends Component {
             justify="left"
             alignItems="left"
             spacing={24}>
-            <Grid item xs={6}>
-               
-                <StoreIcon className="storeIcon"/>
-                <Typography variant="title">{this.props.titulo}</Typography>
-                
-                </Grid>
-                <Grid item xs={6}>
-                <Button>PUBLICAR RESEÑA</Button>
-                </Grid>
-                </Grid>         
+            <Grid item xs={1}>
+            <StoreIcon className="storeIcon"/>
+            </Grid>
+            <Grid item xs={1}>
+            <Typography variant="title">{this.props.titulo}</Typography>
+            </Grid>
+            </Grid>          
         )
     }
 }

@@ -11,13 +11,15 @@ import {
   } from 'react-router-dom';
   import { Grid, FormControl, Input, Typography, Button } from '@material-ui/core';
 
+const toReviewForm = props => <Link to="/publicarreseña" {...props} />
+
 class Reseñas extends Component {
     render() {
         return (
             <div className="FondoReseñas">
-            <AppBar />
-            <h1>hola"!</h1>          
-            <Tipography titulo="Tienda" /> 
+            <AppBar />         
+            <Tipography titulo="Tienda" />
+            <Button component={toReviewForm}>Publicar reseña</Button> 
             <ShowReviews />
             </div>
         )

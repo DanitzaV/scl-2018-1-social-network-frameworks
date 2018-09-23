@@ -4,8 +4,6 @@ import FormReseña from '../Componentes/PublicarReseña/FormReseña';
 import '../Componentes/PublicarReseña/PublishReview.css';
 import AppBar from '../Componentes/AppBar/AppBar';
 import app from './../base';
-import MediaControlCard from '../Componentes/PublicarReseña/ReviewCard';
-
 
 class PublicarReseña extends Component {
     constructor(props) {
@@ -16,8 +14,7 @@ class PublicarReseña extends Component {
             <div className="FondoPublicarReseñas">
                 <AppBar />
                 <Tipography titulo="Tienda" />
-                <FormReseña />
-                <MediaControlCard />
+                <FormReseña />     
             </div>
         )
     }

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Grid } from '@material-ui/core';
 import firebase from './../../base';
-import ReviewCard from './ReviewCard';
+import Card from './Card';
 
-class ShowReviews extends Component {
+class ShowEvents extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            reviews: []
+            events: []
         } 
     }
 
@@ -16,14 +16,16 @@ class ShowReviews extends Component {
           .on('child_added', (newReview) => {
             console.log(newReview.val())
             let info = {
-                store: newReview.val().store,
-                review: newReview.val().review,
+                title: newReview.val().title,
+                description: newReview.val().description,
+                direccion: newReview.val().direction,
                 user: newReview.val().creatorcorreo,
-                date: newReview.val().date,
+                fecha: newReview.val().fecha,
+                hora: newReview.val().hora,
                 picture: newReview.val().picture
             };
             this.setState({
-                reviews: [info].concat(this.state.reviews)
+                events: [info].concat(this.state.events)
             });
         });
     }
@@ -33,16 +35,18 @@ class ShowReviews extends Component {
             <div>
                 <Grid item xs>
                 </Grid>
-                <Grid container direction="row">
-                {this.state.reviews.map(ele => {
+                <Grid container row>
+                {this.state.events.map(ele => {
                     return (
                         <li>
                         <Grid>
-                            <ReviewCard
-                            nombre={ele.store}
-                            reseña={ele.review}
+                            <Card
+                            nombre={ele.title}
+                            descripcion={ele.description}
+                            direccion={ele.direccion}
                             user={ele.user}
-                            fecha={ele.date}
+                            fecha={ele.fecha}
+                            hora={ele.hora}
                             imagen={ele.picture}/>
                         </Grid>
                         </li>
@@ -54,4 +58,4 @@ class ShowReviews extends Component {
     }
 }
 
-export default ShowReviews;
+export default ShowEvents;

@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
-import app from './../base';
+import firebase from './../base';
 import AppBar from '../Componentes/AppBar/AppBar';
+import FormEventos from '../Componentes/EventosPublicados/FormEventos';
+import Title from '../Componentes/EventosPublicados/Title';
 
 class PublicarEventos extends Component {
     render() {
         return (
-            <div>
+            <div className="Fondo">
                 <AppBar />
-                <h1>Publica eventos</h1>
+                <Title titulo="Evento" />
+                <FormEventos />
+                
             </div>
         )
     }
 }
+
+export default PublicarEventos;

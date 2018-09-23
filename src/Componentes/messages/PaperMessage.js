@@ -25,6 +25,7 @@ function PaperMessage(props) {
         <Typography component="p">
             {props.text}
         </Typography>
+        <img src={props.imagen} width="200"/>
       </Paper>
     </div>
   );

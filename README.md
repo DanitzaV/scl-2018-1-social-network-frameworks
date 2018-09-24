@@ -1,10 +1,5 @@
 # Love Your Body
 
-## Planificación
-
-Aquí puedes ver nuestra planificación en el siguiente link: [Trello](https://trello.com/b/9wNboWN4/red-social-react)
-
-# Proyecto red social
 
 ## Preámbulo
 
@@ -84,19 +79,24 @@ En el siguiente link podrá acceder al documento.
 
 (https://drive.google.com/file/d/1hAyjfOipNYt894lf0_FAbULvHKNBmnVh/view?usp=sharing)
 
-## Prototipo de Baja fidelidad
+## Bosquejo de componentes
+
+<img src="https://imgur.com/a/k9Cdipp" height="500" alt="comp" />
+
+## Prototipo de baja fidelidad
 
 <img src="https://github.com/valecj/love-your-body/blob/master/assets/img/pbf1.png"  height="400" alt="pbf1"/>
 
-## Prototipo de Alta fidelidad
+## Prototipo de alta fidelidad
 
 <img src="https://github.com/valecj/love-your-body/blob/master/assets/img/colaggepaf1.png"  height="400" alt="colaggepaf1"/>
 <img src="https://github.com/valecj/love-your-body/blob/master/assets/img/colaggepaf2.png"  height="400" alt="colaggepaf2"/>
 
-## Trello, Planificación de proyecto.
+## Trello, planificación de proyecto.
 
 La planificación se trata de definir cada paso con el fin de cumplir pequeños logros encaminados a cumplir una meta más grande. Planificar permite prevenir problemas que se pudieran presentar o, en su defecto, tener tiempo para solucionar y sobreponerse ante cualquier contratiempo que surja fuera de lo establecido.
 
 Si quieres ver como nos organizamos para cumplir nuestros objetivos y a la vez conocer las tareas que realizamos cada una ingresa a al siguiente link.
 
-(https://trello.com/b/LVAWMjj3/red-social)
+[Trello](https://trello.com/b/LVAWMjj3/red-social)
+[Trello de la red social con ReactJS](https://trello.com/b/9wNboWN4/red-social-react)

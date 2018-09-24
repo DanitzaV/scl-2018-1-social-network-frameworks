@@ -194,7 +194,7 @@ const styles = theme => ({
                   <Typography variant="subheading">Descripción</Typography>
                   <textarea onChange={this.handleDescriptionChange}></textarea>
                 </FormControl>
-                <Button type="submit" className="btnForm">PUBLICAR</Button>
+                <Button type="submit" variant="raised" color="primary" className="btnForm">PUBLICAR</Button>
               </Grid>
   
               <Grid item xs>

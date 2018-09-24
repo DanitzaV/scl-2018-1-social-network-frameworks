@@ -131,7 +131,7 @@ class FormReseña extends Component {
                 <Typography variant="subheading">Reseña</Typography>
                 <textarea onChange={this.handleReviewChange}></textarea>
               </FormControl>
-              <Button type="submit" className="btnForm">PUBLICAR</Button>
+              <Button type="submit" variant="raised" color="primary" className="btnForm">PUBLICAR</Button>
             </Grid>
 
             <Grid item xs>

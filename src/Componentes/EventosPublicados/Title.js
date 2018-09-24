@@ -3,6 +3,11 @@ import { withStyles } from '@material-ui/core/styles';
 import { Grid, Typography, Button } from '@material-ui/core';
 import 'typeface-roboto';
 import SvgIcon from '@material-ui/core/SvgIcon';
+import {
+  BrowserRouter as ReactRouter,
+  Link,
+  Route,
+} from 'react-router-dom';
 
 
 const styles = {
@@ -17,6 +22,9 @@ const styles = {
       width: 50,
       height: 50,
     },
+    marg: {
+      marginTop: 20
+    }
   };
   
   function EventIcon(props) {
@@ -26,28 +34,30 @@ const styles = {
         </SvgIcon>
       );
     }
-  
-  class Title extends Component {
-      constructor(props) {
-          super(props)
-      }
-  
-      render() {
-          return (
-              <Grid
-              container
-              justify="right"
-              alignItems="right"
-              spacing={24}>
-              <Grid item xs={1}>
-              <EventIcon className="storeIcon"/>
-              </Grid>
-              <Grid item xs={1}>
-              <Typography variant="title">{this.props.titulo}</Typography>
-              </Grid>
-              </Grid>        
-        )
-      }
-  }
-  
-  export default withStyles(styles)(Title);
+const toPublishEvent = props => <Link to="/publicarevento" {...props} />
+
+class Title extends Component {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+      const { classes } = this.props;
+        return (
+            <Grid container className={classes.marg}>
+            <Grid item xs={1}>
+            <EventIcon className="storeIcon"/>
+            </Grid>
+            <Grid item xs={1}>
+            <Typography variant="title">{this.props.titulo}</Typography>
+            </Grid>
+            <Grid item xs={6}></Grid>
+            <Grid item xs={4}>
+            <Button variant="raised" color="primary" component={toPublishEvent}>Publicar Evento</Button>
+            </Grid>
+            </Grid>        
+      )
+    }
+}
+
+export default withStyles(styles)(Title);

@@ -23,6 +23,9 @@ const styles = {
     width: 50,
     height: 50,
   },
+  marg: {
+    marginTop: 20
+  }
 };
 
 function StoreIcon(props) {
@@ -43,7 +46,7 @@ class Title extends Component {
     render() {
       const { classes } = this.props;
         return (
-            <Grid container row>
+            <Grid container row className={classes.marg}>
             <Grid item xs={1}>
             <StoreIcon className="storeIcon"/>
             </Grid>
@@ -52,7 +55,7 @@ class Title extends Component {
             </Grid>
             <Grid item xs={6}></Grid>
             <Grid item xs={4}>
-            <Button component={toReviewForm}>Publicar reseña</Button>
+            <Button variant="raised" color="primary" component={toReviewForm}>Publicar reseña</Button>
             </Grid>
             </Grid>          
         )

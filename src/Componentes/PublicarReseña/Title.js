@@ -3,6 +3,13 @@ import { withStyles } from '@material-ui/core/styles';
 import { Grid, Typography, Button } from '@material-ui/core';
 import 'typeface-roboto';
 import SvgIcon from '@material-ui/core/SvgIcon';
+import {
+  BrowserRouter as ReactRouter,
+  Link,
+  Route,
+} from 'react-router-dom';
+import './PublishReview.css'
+
 
 const styles = {
   row: {
@@ -26,23 +33,26 @@ function StoreIcon(props) {
     );
   }
 
+const toReviewForm = props => <Link to="/publicarreseña" {...props} />
+
 class Title extends Component {
     constructor(props) {
         super(props)
     }
 
     render() {
+      const { classes } = this.props;
         return (
-            <Grid
-            container
-            justify="left"
-            alignItems="left"
-            spacing={24}>
+            <Grid container row>
             <Grid item xs={1}>
             <StoreIcon className="storeIcon"/>
             </Grid>
             <Grid item xs={1}>
             <Typography variant="title">{this.props.titulo}</Typography>
+            </Grid>
+            <Grid item xs={6}></Grid>
+            <Grid item xs={4}>
+            <Button component={toReviewForm}>Publicar reseña</Button>
             </Grid>
             </Grid>          
         )

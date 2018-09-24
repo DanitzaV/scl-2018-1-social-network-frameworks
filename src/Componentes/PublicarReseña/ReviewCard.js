@@ -15,6 +15,7 @@ import { Grid } from '@material-ui/core';
 const styles = theme => ({
   card: {
     display: 'flex',
+    margin: 40
   },
   details: {
     display: 'flex',

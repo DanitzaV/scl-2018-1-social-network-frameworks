@@ -11,7 +11,8 @@ import { Grid } from "@material-ui/core";
 
 const styles = {
   card: {
-    maxWidth: 345
+    maxWidth: 345,
+    margin: 60
   },
   media: {
     // ⚠️ object-fit is not supported by IE11.

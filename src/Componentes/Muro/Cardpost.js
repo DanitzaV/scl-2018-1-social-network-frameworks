@@ -18,6 +18,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import DeleteIcon from '@material-ui/icons/Delete';
 import firebase from './../../base';
+import { Redirect } from 'react-router-dom';
 const styles = theme => ({
   
   media: {
@@ -44,7 +45,7 @@ class RecipeReviewCard extends React.Component {
     
     deletePost(){ 
       const key =  firebase.database().ref(`postuser/${this.props.id}`).key
-      firebase.database().ref(`postuser/${this.props.id}`).remove();
+      firebase.database().ref(`postuser/${key}`).remove();
       document.getElementById(key).style.display = "none";
     }
    

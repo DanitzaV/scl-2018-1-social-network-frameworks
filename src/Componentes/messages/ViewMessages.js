@@ -25,6 +25,9 @@ class ViewMessages extends Component {
            
            
         }
+        componentWillUnmount() {
+            firebase.database().ref('messages').off()
+          }
 
       
      

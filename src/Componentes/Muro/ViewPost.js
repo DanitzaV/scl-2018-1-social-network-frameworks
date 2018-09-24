@@ -15,33 +15,24 @@ import './muro.css';
 // }
 
 class ViewPost extends Component {
-  state = {
-    post: []
+  constructor(){
+    super();
+    this.state = {
+      post: []
+    }
   }
-  itemsRef = firebase.database().ref('postuser')
-  componentWillMount(){
-    this.itemsRef.on('child_added', (newPost) => {
-                console.log(newPost)
-                let message = { key: newPost.key, text: newPost.val().text, id: Date.now(),user: newPost.val().creatorcorreo, year: newPost.val().year , picture: newPost.val().picture};
-        this.setState({ post: [message].concat(this.state.post) });
-              }) 
-    // this.itemsRef.on('value', data=> {
-    //   this.setState({
-    //     items: data.val()
-    //   })
-    // })
-    console.log(this.state.post)
-  }
-  // deleteItem = (id) => {
-  //   console.log(id)
-    
-  //   // this.itemsRef.update({
-  //   //   [id]: null
-  //   // })
-  // }
- 
-
-        
+      componentWillMount(){
+        firebase.database().ref('postuser')
+          .on('child_added', (newPost) => {
+            console.log(newPost.val())
+            let message = { key: newPost.key, text: newPost.val().text, id: Date.now(),user: newPost.val().creatorcorreo, year: newPost.val().year , picture: newPost.val().picture};
+    this.setState({ post: [message].concat(this.state.post) });
+          })
+      }
+      componentWillUnmount() {
+        firebase.database().ref('postuser').off()
+      }
+       
      
   render() {
     return (

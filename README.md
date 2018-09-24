@@ -81,7 +81,7 @@ En el siguiente link podrá acceder al documento.
 
 ## Bosquejo de componentes
 
-<img src="https://imgur.com/a/k9Cdipp" height="500" alt="comp" />
+<img src="https://i.imgur.com/CEF022z.jpg" height="500" alt="comp" />
 
 ## Prototipo de baja fidelidad
 
@@ -99,4 +99,5 @@ La planificación se trata de definir cada paso con el fin de cumplir pequeños 
 Si quieres ver como nos organizamos para cumplir nuestros objetivos y a la vez conocer las tareas que realizamos cada una ingresa a al siguiente link.
 
 [Trello](https://trello.com/b/LVAWMjj3/red-social)
+
 [Trello de la red social con ReactJS](https://trello.com/b/9wNboWN4/red-social-react)

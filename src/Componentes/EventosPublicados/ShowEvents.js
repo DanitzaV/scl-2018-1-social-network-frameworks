@@ -39,7 +39,7 @@ class ShowEvents extends Component {
                 <Grid container row>
                 {this.state.events.map(ele => {
                     return (
-                        <li>
+                       <li>
                         <Grid>
                             <ImgMediaCard
                             nombre={ele.title}

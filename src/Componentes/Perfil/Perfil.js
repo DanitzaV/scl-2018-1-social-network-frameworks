@@ -2,8 +2,20 @@ import React, { Component } from 'react';
 import firebase from '../../base';
 import Button from '@material-ui/core/Button';
 import Modal from './Modal';
+import { withStyles } from '@material-ui/core/styles';
+import { Grid, FormControl, Typography } from '@material-ui/core';
 
-
+const styles = theme => ({
+  
+    paper: {
+      padding: theme.spacing.unit * 2,
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+    },
+    input: {
+      display: 'none',
+    },
+  });
 
 class Perfil extends Component {
     constructor(props) {
@@ -11,12 +23,7 @@ class Perfil extends Component {
 
         this.state = {
             email: '',
-            name: '',
-            phone: '',
         };
-        
-        this.handleNameChange = this.handleNameChange.bind(this);
-        this.handlePhoneChange = this.handlePhoneChange.bind(this);
     }
 
     componentWillMount() {
@@ -27,41 +34,38 @@ class Perfil extends Component {
         });          
     }
 
-    handleNameChange(event) {
-        this.setState({
-          name: event.target.value
-        });
-    }
-
-    handlePhoneChange(event) {
-        this.setState({
-          phone: event.target.value
-        });
-    }
-
-    handleChange(event) {
-        const currentUser = firebase.auth().currentUser;
-        const newProfileKey = firebase.database().ref().child('profile').push().key;
-        firebase.database().ref(`profile/${newProfileKey}`).set({
-            creator : currentUser.uid,
-            name: this.state.name,
-            phone: this.state.phone
-        });
-    }
-
     render() {
         return (
             <div>
-               <Modal />
+
+
+               <FormControl margin="normal" fullWidth>
+                <Typography variant="subheading">Imagen (opcional)</Typography>
+                <input
+                accept="image/*"
+              
+                id="contained-button-file"
+                multiple
+                type="file"
+                onChange={this.handleOnChange}
+              />
+                <label htmlFor="contained-button-file">
+                  <Button variant="contained" component="span">
+                    Upload
+                  </Button>
+                </label>
+              </FormControl>
+
+                <Modal />
+
                 <h1>Email: {this.state.email}</h1>
 
-                <span>nombre: {this.state.name}</span>
+                <span>nombre: {this.props.nombre}</span>
                
-                <span>celular: {this.state.phone}</span>
+                <span>celular: {this.props.fono}</span>
                 
             </div>
         )
     }
 };
-
-export default Perfil;
+export default withStyles(styles)(Perfil);  

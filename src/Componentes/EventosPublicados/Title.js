@@ -8,35 +8,33 @@ import {
   Link,
   Route,
 } from 'react-router-dom';
-import './PublishReview.css'
 
 
 const styles = {
-  row: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  avatar: {
-    margin: 10,
-  },
-  bigAvatar: {
-    width: 50,
-    height: 50,
-  },
-  marg: {
-    marginTop: 20
-  }
-};
-
-function StoreIcon(props) {
-    return (
-      <SvgIcon {...props}>
-        <path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z" />
-      </SvgIcon>
-    );
-  }
-
-const toReviewForm = props => <Link to="/publicarreseña" {...props} />
+    row: {
+      display: 'flex',
+      justifyContent: 'center',
+    },
+    avatar: {
+      margin: 10,
+    },
+    bigAvatar: {
+      width: 50,
+      height: 50,
+    },
+    marg: {
+      marginTop: 20
+    }
+  };
+  
+  function EventIcon(props) {
+      return (
+        <SvgIcon {...props}>
+          <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
+        </SvgIcon>
+      );
+    }
+const toPublishEvent = props => <Link to="/publicarevento" {...props} />
 
 class Title extends Component {
     constructor(props) {
@@ -46,19 +44,19 @@ class Title extends Component {
     render() {
       const { classes } = this.props;
         return (
-            <Grid container row className={classes.marg}>
+            <Grid container className={classes.marg}>
             <Grid item xs={1}>
-            <StoreIcon className="storeIcon"/>
+            <EventIcon className="storeIcon"/>
             </Grid>
             <Grid item xs={1}>
             <Typography variant="title">{this.props.titulo}</Typography>
             </Grid>
             <Grid item xs={6}></Grid>
             <Grid item xs={4}>
-            <Button variant="raised" color="primary" component={toReviewForm}>Publicar reseña</Button>
+            <Button variant="raised" color="primary" component={toPublishEvent}>Publicar Evento</Button>
             </Grid>
-            </Grid>          
-        )
+            </Grid>        
+      )
     }
 }
 

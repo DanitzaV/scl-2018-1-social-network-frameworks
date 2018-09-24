@@ -11,11 +11,12 @@ import {
   } from 'react-router-dom';
   import { Grid, FormControl, Input, Typography, Button } from '@material-ui/core';
 
+
 class Reseñas extends Component {
     render() {
         return (
             <div className="FondoReseñas">
-            <AppBar />          
+            <AppBar />         
             <Tipography titulo="Tienda" /> 
             <ShowReviews />
             </div>

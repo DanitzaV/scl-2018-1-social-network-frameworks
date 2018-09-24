@@ -10,7 +10,7 @@ import {
   } from 'react-router-dom';
   import ShowEvents from '../Componentes/EventosPublicados/ShowEvents';
 
-const aj = props => <Link to="/publicarevento" {...props} />
+const toPublishEvent = props => <Link to="/publicarevento" {...props} />
 
 class Eventos extends Component {
     render() {
@@ -18,7 +18,7 @@ class Eventos extends Component {
             <div>
                 <AppBar />
                 <Title titulo="Evento" />
-                <Button component={aj}>Publicar Evento</Button>
+                <Button component={toPublishEvent}>Publicar Evento</Button>
                 <ShowEvents />
             </div>
         )

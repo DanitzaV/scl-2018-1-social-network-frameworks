@@ -1,31 +1,64 @@
 import React, { Component } from 'react';
-import app from '../../base';
+import firebase from '../../base';
+import Button from '@material-ui/core/Button';
+import Modal from './Modal';
+
+
 
 class Perfil extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
-            email: 0,
+            email: '',
             name: '',
-            phone: ''
-        } 
+            phone: '',
+        };
+        
+        this.handleNameChange = this.handleNameChange.bind(this);
+        this.handlePhoneChange = this.handlePhoneChange.bind(this);
     }
 
     componentWillMount() {
-        return app.auth().onAuthStateChanged((user) => {
-            console.log(user);
+        return firebase.auth().onAuthStateChanged((user) => {
             this.setState({
                 email: user.email
             });
         });          
     }
 
+    handleNameChange(event) {
+        this.setState({
+          name: event.target.value
+        });
+    }
+
+    handlePhoneChange(event) {
+        this.setState({
+          phone: event.target.value
+        });
+    }
+
+    handleChange(event) {
+        const currentUser = firebase.auth().currentUser;
+        const newProfileKey = firebase.database().ref().child('profile').push().key;
+        firebase.database().ref(`profile/${newProfileKey}`).set({
+            creator : currentUser.uid,
+            name: this.state.name,
+            phone: this.state.phone
+        });
+    }
+
     render() {
         return (
             <div>
+               <Modal />
                 <h1>Email: {this.state.email}</h1>
-                <input type="text" ref={this.state.name}/>
-                <input type="number" ref={this.state.phone}/>
+
+                <span>nombre: {this.state.name}</span>
+               
+                <span>celular: {this.state.phone}</span>
+                
             </div>
         )
     }

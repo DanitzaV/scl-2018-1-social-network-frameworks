@@ -31,6 +31,10 @@ class ShowEvents extends Component {
         });
     }
 
+    componentWillUnmount() {
+        firebase.database().ref('events').off()
+    }
+
     render() {
         return (
             <div>
@@ -39,7 +43,7 @@ class ShowEvents extends Component {
                 <Grid container row>
                 {this.state.events.map(ele => {
                     return (
-                       <li>
+                     
                         <Grid>
                             <ImgMediaCard
                             nombre={ele.title}
@@ -51,7 +55,7 @@ class ShowEvents extends Component {
                             imagen={ele.picture}
                             />
                         </Grid>
-                        </li>
+                      
                     )
                 })}
                 </Grid>

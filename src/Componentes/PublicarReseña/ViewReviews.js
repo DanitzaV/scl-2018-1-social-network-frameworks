@@ -28,6 +28,10 @@ class ShowReviews extends Component {
         });
     }
 
+    componentWillUnmount() {
+        firebase.database().ref('reviews').off()
+    }
+
     render() {
         return (
             <div>

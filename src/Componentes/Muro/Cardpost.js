@@ -37,25 +37,24 @@ class RecipeReviewCard extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-          avatar: ''
+          avatar: '',
+          like: []
         }
-        this.deletePost = this.deletePost.bind(this);
+        this.postid = props.id;
+        this.likes = props.likes;
     }
-
-    
-    deletePost(){ 
-      const key =  firebase.database().ref(`postuser/${this.props.id}`).key
-      firebase.database().ref(`postuser/${key}`).remove();
-      document.getElementById(key).style.display = "none";
-    }
-   
+   handleRemove(id){
+    this.props.delete(id)
+   }
+   handleLike(id,su){
+     this.props.like(id,su)
+   }
 
   render() {
     const { classes } = this.props;
-
     return (
         
-      <Card className={classes.card} id={this.props.id}>
+      <Card className={classes.card} key={this.props.id}>
         <CardHeader
           avatar={
             <Avatar aria-label="Recipe" className={classes.avatar}>
@@ -81,13 +80,15 @@ class RecipeReviewCard extends React.Component {
           </Typography>
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
-          <IconButton aria-label="Add to favorites">
+          <IconButton aria-label="Add to favorites" onClick={()=> this.handleLike(this.postid,this.likes)}>
             <FavoriteIcon />
+            
           </IconButton>
+          <p>{this.props.likes}</p>
           <IconButton aria-label="Share">
             <ShareIcon />
           </IconButton>
-          <IconButton onClick={this.deletePost} aria-label="Delete"  color="secondary">
+          <IconButton id={this.props.id} onClick={()=> this.handleRemove(this.postid)} aria-label="Delete"  color="secondary">
         <DeleteIcon />
       </IconButton>
         </CardActions>

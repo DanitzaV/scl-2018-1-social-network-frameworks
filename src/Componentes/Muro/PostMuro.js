@@ -23,7 +23,6 @@ class PostMuro extends Component {
       handleChange(event) {
         this.setState({value: event.target.value});
       }
-    
       handleSubmit(event) {
         event.preventDefault();
         const currentUser = firebase.auth().currentUser;
@@ -38,7 +37,8 @@ class PostMuro extends Component {
             creatorImg: currentUser.photoURL,
             picture: this.state.img,
             year: horas,
-            text : this.state.value
+            text : this.state.value,
+            likes: 0
         });
 
         

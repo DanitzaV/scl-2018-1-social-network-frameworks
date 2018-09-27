@@ -15,37 +15,87 @@ import './muro.css';
 // }
 
 class ViewPost extends Component {
-  constructor(){
-    super();
-    this.state = {
-      post: []
-    }
+  constructor(props){
+    super(props);
+  this.state = {
+    items: []
   }
-      componentWillMount(){
-        firebase.database().ref('postuser')
-          .on('child_added', (newPost) => {
-            console.log(newPost.val())
-            let message = { key: newPost.key, text: newPost.val().text, id: Date.now(),user: newPost.val().creatorcorreo, year: newPost.val().year , picture: newPost.val().picture};
-    this.setState({ post: [message].concat(this.state.post) });
-          })
+  this.deleteItem = this.deleteItem.bind(this);
+  this.daleLike = this.daleLike.bind(this);
+  this.itemsRef = firebase.database().ref('postuser')  
+  this.likesyes = firebase.database() 
+  
+}
+
+  componentDidMount(){
+    const {items} = this.state;
+    this.itemsRef.on('child_added', newPost => {
+      items.push({
+        id: newPost.key, 
+        text: newPost.val().text,
+        user: newPost.val().creatorcorreo, 
+        year: newPost.val().year , 
+        picture: newPost.val().picture,
+        likes: newPost.val().likes
+      })
+      this.setState({items})
+    })
+
+    this.itemsRef.on('child_removed', removepost => {
+      for (let i = 0; i < items.length; i++) {
+       if (items[i].id == removepost.key)  {
+        items.splice(i,1)
+       }
+        
       }
+      
+      this.setState({items})
+    })
+    this.itemsRef.on('child_changed',cambios =>{
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].id == cambios.key)  {
+           items[i].likes = cambios.val().likes
+        }
+       }
+       this.setState({items})
+       console.log(this.state.items)
+    })
+    
+    
+  }
+
       componentWillUnmount() {
         firebase.database().ref('postuser').off()
+      }
+
+      deleteItem(id){
+        this.itemsRef.child(id).remove()
+      }
+      daleLike(id,su){
+
+        const suma = su + 1
+        this.itemsRef.child(id).update({
+         likes: suma
+        })
+        
+       
       }
        
      
   render() {
+
     return (
 
-       <Grid container   alignItems="center" direction="row" justify="center" alignItems="center" >
+       <Grid container justify="center" >
        
       {
-          this.state.post.map(e => {
+          this.state.items.map(e => {
+            
             return (
              
               
-              <Grid item xs={12} sm={6} lg={5} xl={6} style={{padding: 17}} >
-                <Cardpost key={e.key} id={e.key} texto={e.text} action={this.deleteItem}  user={e.user} horario={e.year} imagen={e.picture} avatar={e.user} ></Cardpost>
+              <Grid  item key={e.id}  xs={12} sm={6} lg={5} xl={6} style={{padding: 17}} >
+                <Cardpost key={e.id} id={e.id} texto={e.text} delete={this.deleteItem} like={this.daleLike} likes={e.likes} user={e.user} horario={e.year} imagen={e.picture} avatar={e.user} ></Cardpost>
               </Grid>
              
              

@@ -19,6 +19,9 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import DeleteIcon from '@material-ui/icons/Delete';
 import firebase from './../../base';
 import { Redirect } from 'react-router-dom';
+import { Menu,MenuIcon,Fade,MenuItem} from '@material-ui/core';
+import './muro.css';
+
 const styles = theme => ({
   
   media: {
@@ -39,10 +42,16 @@ class RecipeReviewCard extends React.Component {
         this.state = {
           avatar: '',
           like: [],
-          showimg: false
+          showimg: false,
+          anchorEl: null,
+          text: ''
         }
+        this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
         this.postid = props.id;
         this.likes = props.likes;
+        this.text = props.texto;
+       
     }
    handleRemove(id){
     this.props.delete(id)
@@ -50,11 +59,36 @@ class RecipeReviewCard extends React.Component {
    handleLike(id,su){
      this.props.like(id,su)
    }
+   show(){
+    
+    document.getElementsByClassName('hi')[0].style.display = 'block'
+    
+    
+   }
+
+   handleChange(event) {
+    this.setState({text: event.target.value});
+  }
+
+  handleSubmit(event) {
+    this.props.edit(this.postid,this.state.text)
+    
+    event.preventDefault();
+  }
    componentWillMount(){
     this.props.imagen == "" ?  this.setState({showimg: false}) : this.setState({showimg: true})
    }
+  
+   handleClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
 
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
   render() {
+    const { anchorEl } = this.state;
+    const open = Boolean(anchorEl);
     const { classes } = this.props;
     
     return (
@@ -67,21 +101,39 @@ class RecipeReviewCard extends React.Component {
             </Avatar>
           }
           action={
-            <IconButton>
+            <IconButton aria-owns={open ? 'fade-menu' : null}
+          aria-haspopup="true"
+          onClick={this.handleClick}>
               <MoreVertIcon />
             </IconButton>
+           
           }
+          
           title={this.props.user}
           subheader={this.props.horario}
         />
+        <Menu
+          id="fade-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={this.handleClose}
+          TransitionComponent={Fade}
+        >
+          <MenuItem onClick={this.show}>Editar</MenuItem>
+         
+        </Menu>
         {
           this.state.showimg ? <CardMedia className={classes.media} image={this.props.imagen} title="Contemplative Reptile"/> : <img src={this.props.imagen}/>
         }
        
         <CardContent>
           <Typography component="p">
-           {this.props.texto}
+            {this.props.texto}
           </Typography>
+          <form onSubmit={this.handleSubmit}  >
+          <input type="text" value={this.state.text} onChange={this.handleChange} />
+        <input type="submit" value="redactar" />
+      </form>
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
           <IconButton aria-label="Add to favorites" onClick={()=> this.handleLike(this.postid,this.likes)}>

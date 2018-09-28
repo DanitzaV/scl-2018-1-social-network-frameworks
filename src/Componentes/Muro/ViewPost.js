@@ -22,6 +22,7 @@ class ViewPost extends Component {
   }
   this.deleteItem = this.deleteItem.bind(this);
   this.daleLike = this.daleLike.bind(this);
+  this.editCard = this.editCard.bind(this);
   this.itemsRef = firebase.database().ref('postuser')  
   this.likesyes = firebase.database() 
   
@@ -55,6 +56,7 @@ class ViewPost extends Component {
       for (let i = 0; i < items.length; i++) {
         if (items[i].id == cambios.key)  {
            items[i].likes = cambios.val().likes
+           items[i].text = cambios.val().text
         }
        }
        this.setState({items})
@@ -80,6 +82,12 @@ class ViewPost extends Component {
         
        
       }
+      editCard(id,text){
+        this.itemsRef.child(id).update({
+          text: text
+         })
+        console.log(`id: ${id}, text: ${text}`);
+      }
        
      
   render() {
@@ -95,7 +103,7 @@ class ViewPost extends Component {
              
               
               <Grid  item key={e.id}  xs={12} sm={6} lg={5} xl={6} style={{padding: 17}} >
-                <Cardpost key={e.id} id={e.id} texto={e.text} delete={this.deleteItem} like={this.daleLike} likes={e.likes} user={e.user} horario={e.year} imagen={e.picture} avatar={e.user} ></Cardpost>
+                <Cardpost key={e.id} id={e.id} texto={e.text} edit={this.editCard} delete={this.deleteItem} like={this.daleLike} likes={e.likes} user={e.user} horario={e.year} imagen={e.picture} avatar={e.user} ></Cardpost>
               </Grid>
              
              

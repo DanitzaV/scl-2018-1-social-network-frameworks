@@ -74,7 +74,7 @@ class MenuListComposition extends React.Component {
                       <MenuItem onClick={this.handleClose} component={toHome}>Muro</MenuItem>
                       <MenuItem onClick={this.handleClose} component={toReviews}>Reseñas de tiendas</MenuItem>
                       <MenuItem onClick={this.handleClose} component={toEvents}>Eventos</MenuItem>
-                      <MenuItem onClick={this.handleClose} component={toMessage}>Mensajes</MenuItem>
+                      <MenuItem onClick={this.handleClose} component={toMessage}>Foro</MenuItem>
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>

@@ -22,6 +22,8 @@ class PostMuro extends Component {
     
       handleChange(event) {
         this.setState({value: event.target.value});
+        
+        
       }
       handleSubmit(event) {
         event.preventDefault();
@@ -40,7 +42,8 @@ class PostMuro extends Component {
             text : this.state.value,
             likes: 0
         });
-
+        this.setState({value: ''})
+        
         
       }
   handleOnChange(event) {
@@ -60,9 +63,9 @@ class PostMuro extends Component {
         this.setState({
           img: url
         })
-        console.log(this.state.img)
+        // console.log(this.state.img)
       });
-
+      
   }
     
       render() {
@@ -73,10 +76,10 @@ class PostMuro extends Component {
                 <Grid container spacing={18} justify="center" style={{ paddingTop: 20, paddingBottom: 20 }}>
 
                   <Grid item>
-                    <Input placeholder="Escribe aqui" value={this.state.value} onChange={this.handleChange} fullWidth />
+                  <Input placeholder="Escribe aqui" value={this.state.value}  onChange={this.handleChange} fullWidth />
                   </Grid>
                   <Grid item >
-                    <input accept="image/*" className="btnNone" id="icon-button-file" type="file" onChange={this.handleOnChange} />
+                    <input accept="image/*" className="btnNone"  id="icon-button-file" type="file" onChange={this.handleOnChange} />
                     <label htmlFor="icon-button-file">
                       <IconButton color="primary" component="span">
                         <PhotoCamera ali />

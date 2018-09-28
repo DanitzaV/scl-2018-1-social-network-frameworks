@@ -5,7 +5,9 @@ import {
   BrowserRouter as ReactRouter,
   Link,
   Route,
+  Redirect
 } from 'react-router-dom';
+import Reseñas from './../../Pages/Reseñas';
 import firebase from '../../base';
 
 
@@ -33,7 +35,8 @@ const styles = theme => ({
             hora: '',
             description: '',
             direction: '',
-            img: ''
+            img: '',
+            click: false
           };
   
           this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -89,6 +92,8 @@ const styles = theme => ({
               direction: this.state.direction,
               description: this.state.description
           });
+         this.state.click ? <Redirect to="reseñas"></Redirect> : alert('tiene que dar click al boton');
+
           event.preventDefault();
         }
   
@@ -194,7 +199,7 @@ const styles = theme => ({
                   <Typography variant="subheading">Descripción</Typography>
                   <textarea onChange={this.handleDescriptionChange}></textarea>
                 </FormControl>
-                <Button type="submit" variant="raised" color="primary" className="btnForm">PUBLICAR</Button>
+                <Button type="submit" variant="raised" color="primary" className="btnForm" onClick={()=> this.setState({click: true})}>PUBLICAR</Button>
               </Grid>
   
               <Grid item xs>

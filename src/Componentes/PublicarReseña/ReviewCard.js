@@ -15,6 +15,7 @@ import { Grid } from '@material-ui/core';
 const styles = theme => ({
   card: {
     display: 'flex',
+    margin: 40
   },
   details: {
     display: 'flex',
@@ -50,20 +51,14 @@ class MediaControlCard extends Component {
     render() { 
         const { classes } = this.props;
   return (
-    <Grid container spacing={4}>
-      <Grid item xs>
-
-      </Grid>
-
-      <Grid item xs={12}> 
+<div>
     <Card className={classes.card}>
-    <Grid item xs={12}> 
+    
       <CardMedia
         className={classes.cover}
         image= {this.props.imagen}
       />
-      </Grid>
-      <Grid items xs={12}>
+  
       <div className={classes.details}>
         <CardContent className={classes.content}>
           <Typography variant="headline">{this.props.nombre}</Typography>
@@ -77,15 +72,11 @@ class MediaControlCard extends Component {
             {this.props.reseña}
           </Typography>
         </CardContent>
+       
       </div>
-      </Grid>
-    </Card>
-    </Grid>
+  </Card>
+  </div>
 
-    <Grid item xs>
-    
-    </Grid>
-    </Grid>
   );
 }
 }

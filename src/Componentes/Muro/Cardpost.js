@@ -69,11 +69,8 @@ class RecipeReviewCard extends React.Component {
           title={this.props.user}
           subheader={this.props.horario}
         />
-        <CardMedia
-          className={classes.media}
-          image={this.props.imagen}
-          title="Contemplative Reptile"
-        />
+       
+        <img width="250" src={this.props.imagen}/>
         <CardContent>
           <Typography component="p">
            {this.props.texto}
@@ -82,7 +79,6 @@ class RecipeReviewCard extends React.Component {
         <CardActions className={classes.actions} disableActionSpacing>
           <IconButton aria-label="Add to favorites" onClick={()=> this.handleLike(this.postid,this.likes)}>
             <FavoriteIcon />
-            
           </IconButton>
           <p>{this.props.likes}</p>
           <IconButton aria-label="Share">

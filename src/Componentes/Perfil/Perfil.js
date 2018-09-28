@@ -8,7 +8,19 @@ import Edit from '@material-ui/icons/Edit'
 import AddIcon from '@material-ui/icons/Add';
 import Icon from '@material-ui/core/Icon';
 import './Perfil.css'
+import { withStyles } from '@material-ui/core/styles';
 
+const styles = theme => ({
+  
+    paper: {
+      padding: theme.spacing.unit * 2,
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+    },
+    input: {
+      display: 'none',
+    },
+  });
 
 
 
@@ -18,7 +30,10 @@ class Perfil extends Component {
 
         this.state = {
             email: '',
-        };
+            
+            name: '',
+            phone: ''
+        } 
     }
 
     componentWillMount() {

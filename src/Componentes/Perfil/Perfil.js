@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import app from '../../base';
+import firebase from '../../base';
 import { Paper, Grid, Button, Avatar, Input, Divider, Typography } from '@material-ui/core';
 import IconButton  from '@material-ui/core/IconButton';
 import  PhotoCamera  from '@material-ui/icons/PhotoCamera';

@@ -61,7 +61,7 @@ class RecipeReviewCard extends React.Component {
    }
    show(){
     
-    document.getElementsByClassName('hi')[0].style.display = 'block'
+    document.getElementById('hi').style.display = 'block'
     
     
    }
@@ -130,7 +130,7 @@ class RecipeReviewCard extends React.Component {
           <Typography component="p">
             {this.props.texto}
           </Typography>
-          <form onSubmit={this.handleSubmit}  >
+          <form onSubmit={this.handleSubmit} id="hi" >
           <input type="text" value={this.state.text} onChange={this.handleChange} />
         <input type="submit" value="redactar" />
       </form>

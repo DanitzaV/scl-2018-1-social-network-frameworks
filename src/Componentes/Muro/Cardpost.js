@@ -38,7 +38,8 @@ class RecipeReviewCard extends React.Component {
         super(props)
         this.state = {
           avatar: '',
-          like: []
+          like: [],
+          showimg: false
         }
         this.postid = props.id;
         this.likes = props.likes;
@@ -49,9 +50,13 @@ class RecipeReviewCard extends React.Component {
    handleLike(id,su){
      this.props.like(id,su)
    }
+   componentWillMount(){
+    this.props.imagen == "" ?  this.setState({showimg: false}) : this.setState({showimg: true})
+   }
 
   render() {
     const { classes } = this.props;
+    
     return (
         
       <Card className={classes.card} key={this.props.id}>
@@ -69,8 +74,10 @@ class RecipeReviewCard extends React.Component {
           title={this.props.user}
           subheader={this.props.horario}
         />
+        {
+          this.state.showimg ? <CardMedia className={classes.media} image={this.props.imagen} title="Contemplative Reptile"/> : <img src={this.props.imagen}/>
+        }
        
-        <img width="250" src={this.props.imagen}/>
         <CardContent>
           <Typography component="p">
            {this.props.texto}
@@ -79,6 +86,7 @@ class RecipeReviewCard extends React.Component {
         <CardActions className={classes.actions} disableActionSpacing>
           <IconButton aria-label="Add to favorites" onClick={()=> this.handleLike(this.postid,this.likes)}>
             <FavoriteIcon />
+            
           </IconButton>
           <p>{this.props.likes}</p>
           <IconButton aria-label="Share">

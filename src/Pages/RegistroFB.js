@@ -26,7 +26,7 @@ class RegistroFB extends Component {
     handleChange = prop => event => {
         this.setState({ [prop]: event.target.value });
     };
-    
+     
     handleClickShowPassword = () => {
         this.setState(state => ({ showPassword: !state.showPassword }));
     };
@@ -54,11 +54,14 @@ class RegistroFB extends Component {
         return (
             <Grid container direction="column"
             justify="center"
-            alignItems="center" id="fondologin">
-                <Grid item xs={10}>
-                <Title titulo="Crea tu cuenta" imagen={logo}></Title>
-                </Grid>
-                <Grid item xs={8} sm={6} md={6} lg={6} >
+            alignItems="center">
+            <Grid iten xs={6} sm={4} md={4} lg={2} xl={2}>
+            <img className="Registro_logo" src={logo}></img>
+            </Grid>
+            <Grid item xs={10}>
+            <h1 className="Registro_title">Crea tu cuenta</h1>
+            </Grid>
+                <Grid item xs={8} sm={6} md={4} lg={3} xl={3}>
                     <form onSubmit={this.handleSubmit}>
                         <FormControl margin="normal" required fullWidth>
                             <Input id="email" type="email" name="email" autoComplete="email" onChange={this.handleEmailChange} />

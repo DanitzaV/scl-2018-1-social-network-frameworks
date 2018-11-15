@@ -56,32 +56,26 @@ class Login extends Component {
         auth.signInWithPopup(providerGG) 
           .then((result) => {
             const user = result.user;
-            this.setState({
-              user
-            });
-          });
-          console.log("Sesión iniciada en Google")
-      }
+            this.setState({ user });
+        });
+    }
       
-      loginFB() {
+    loginFB() {
         auth.signInWithPopup(providerFB) 
         .then((result) => {
           const user = result.user;
-          this.setState({
-            user
-          });
+          this.setState({ user });
         });
-        console.log("Sesión iniciada en Facebook") 
-      }
+    }
     
     render () {
         return (
             <div>
             <Grid container direction="column" justify="center" alignItems="center">
-                <Grid item xs={10} sm={12} md={12} lg={12}>
-                <Title imagen={logo}></Title>
+                <Grid item xs={7} sm={3} md={2} lg={2} xl={2}>
+                <img className="Login_main-logo" src={logo}></img>
                 </Grid>
-                <Grid item xs={8} sm={6} lg={4}>
+                <Grid item xs={8} sm={6} lg={4} xl={4}>
                     <form onSubmit={this.handleSubmit}>
                         <FormControl margin="normal" required fullWidth>
                             <Input placeholder="Ingresa tu correo electrónico" className="Login_inputs" id="email" type="email" name="email" onChange={this.handleEmailChange} />
@@ -111,18 +105,18 @@ class Login extends Component {
                 </Grid>
             </Grid>
             <Grid container direction="row" justify="center" alignItems="center" className="-o-">
-            <Grid item xs={3} sm={1}>
+            <Grid item xs={3} sm={1} md={1} lg={1} xl={1}>
             <div className="Login_line"></div>
             </Grid>
             <Grid item xs={1} className="ó">
             ó
             </Grid>
-            <Grid item xs={3} sm={1}>
+            <Grid item xs={3} sm={1} md={1} lg={1} xl={1}>
             <div className="Login_line"></div>
             </Grid>
             </Grid>
             <Grid container direction="column" justify="center" alignItems="center">
-            <Grid item xs={8}>
+            <Grid item xs={8} sm={6} lg={4} xl={4}>
             <Button onClick={this.loginFB} className="Login_btn-fb">Inicia sesión con <strong>Facebook</strong></Button>
             <Button onClick={this.loginGG} className="Login_btn-gg">Inicia sesión con <strong>Google</strong></Button>
             </Grid>

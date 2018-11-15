@@ -29,9 +29,7 @@ class Title extends Component {
       <Grid container direction="column"
         justify="center"
         alignItems="center" spacing={2} >
-        <Grid item xs >
-
-        </Grid>
+       
         <Grid item xs={8} sm={6} md={6} lg={6}>
           <Logo imagen={this.props.imagen} />
           <img />

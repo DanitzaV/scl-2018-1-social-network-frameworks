@@ -1,19 +1,22 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
 body{
     margin: 0;
     background-color: white;
 }
 
 /* Logo */
-img {
+.Login_main-logo, .Registro_logo {
     width: 100%;
-    height: 100%; 
-}
+    margin-bottom: 2rem;
+} 
 
 /* Inputs */
 .Login_inputs {
     margin-top: -2rem;
     border: 2px solid rgb(221, 215, 215);
-    font-family: 'Roboto', sans-serif;
     font-weight: 500;
 }
 
@@ -54,7 +57,6 @@ strong {
 .Login_quest, .Registro_quest {
     color: rgb(155, 150, 150);
     text-align: center;
-    font-family: 'Roboto', sans-serif;
     font-weight: 700;
 }
 
@@ -75,4 +77,8 @@ strong {
 /* Texto registro y login */
 .MuiTypography-title-0107, .ó {
     text-align: center;
+}
+
+.Registro_title {
+    font-size: 1.3rem;
 }

@@ -11,6 +11,8 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import firebase, { auth, providerGG, providerFB } from '../base';
+import Sitting from './../img/sitting-1.png';
+import Standing from './../img/standing-3.png';
 
 class Login extends Component {
     constructor () {   
@@ -71,7 +73,45 @@ class Login extends Component {
     render () {
         return (
             <div>
-            <Grid container direction="column" justify="center" alignItems="center">
+                <Grid container direction="row" className="Humans">
+                    <Grid item xs={7}>
+                        <img src={Standing}></img>
+                        <img src={Sitting}></img>
+                    </Grid>
+                    <Grid item xs={5}>
+                        <h1>Love Your Body</h1>
+                        <h2>Inicia sesión con tu cuenta</h2>
+                        <form onSubmit={this.handleSubmit}>
+                        <FormControl margin="normal" required fullWidth>
+                            <Input placeholder="Ingresa tu correo electrónico" className="Login_inputs" id="email" type="email" name="email" onChange={this.handleEmailChange} />
+                        </FormControl>
+                        <FormControl margin="normal" required fullWidth>
+                            <Input
+                                placeholder="Ingresa tu contraseña"
+                                className="Login_inputs"
+                                id="adornment-password"
+                                type={this.state.showPassword ? 'text' : 'password'}
+                                value={this.state.password}
+                                onChange={this.handleChange('password')}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="Toggle password visibility"
+                                            onClick={this.handleClickShowPassword}
+                                        >
+                                            {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                            />
+                        </FormControl>
+                        <Button variant="raised" color="primary" fullWidth type="submit" className="Login_btn">Iniciar sesión</Button>  
+                    </form>
+                    </Grid>
+                </Grid>
+                
+
+      {/*       <Grid container direction="column" justify="center" alignItems="center">
                 <Grid item xs={7} sm={3} md={2} lg={2} xl={2}>
                 <img className="Login_main-logo" src={logo}></img>
                 </Grid>
@@ -125,7 +165,7 @@ class Login extends Component {
                 <Grid item xs={8}>
                 <p className="Login_quest">¿No tienes cuenta? <br></br> Regístrate <Link to="/registro">aquí</Link></p>
                 </Grid>
-            </Grid>
+            </Grid> */}
             </div>
         );
     }

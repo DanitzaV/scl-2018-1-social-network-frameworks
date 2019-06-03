@@ -16,9 +16,10 @@ body{
 
 /* Inputs */
 .Login_inputs {
-    margin-top: -2rem;
-    border: 2px solid rgb(221, 215, 215);
+    border: 2px solid rgb(180, 180, 180);
     font-weight: 500;
+    padding: 5px;
+    margin-bottom: 5px;
 }
 
 .Login_inputs:after, .Login_inputs:before {
@@ -28,26 +29,38 @@ body{
 }
 
 /* Botones iniciar sesión y registro */
-.Login_btn, .Registro_btn, .Login_btn-fb, .Login_btn-gg {
+.Registro_btn, .Login_btn-fb, .Login_btn-gg {
     text-transform: none !important;
     border-radius: 34px !important;
     font-size: 15px !important;
     color: white !important;
     width: 100% !important;
 }
+.Login_btn {
+    text-transform: none !important;
+    border-radius: 34px !important;
+    font-size: 17px !important;
+    color: white !important;
+    padding: 15px;
+}
 
 .Login_btn, .Registro_btn {
-    background-color: #63C697 !important;
+    background-color: rgb(161, 116, 242) !important;
     margin-inline-start: 2em;
 }
 
 .Login_btn-fb {
-    background-color: #3B5998 !important;
+    margin-top: 7%;
+    color: #3B5998 !important;
     margin-bottom: 0.5rem !important;
+    background: white !important;
+    filter: drop-shadow(0 0 0.25rem rgb(175, 175, 175));
 }
 
 .Login_btn-gg {
-    background-color: #db3236 !important;
+    color: #db3236 !important;
+    background: white !important;
+    filter: drop-shadow(0 0 0.25rem rgb(175, 175, 175));
 }
 
 strong {
@@ -85,32 +98,45 @@ strong {
 }
 
 .Humans {
-    background-image: url("../../img/Wireframe.svg");
-    background-position: left;
-    background-repeat: no-repeat;
     height: 100vh;
 }
-
+.Humans .images {
+    background-image: url("../../img/Wireframe.svg");
+    background-position: center;
+    background-size: 95% 700px;
+    background-repeat: no-repeat;
+    display: flex;
+    padding: 25px;
+}
 .Humans img {
-    margin-top: 15%;
+    margin-top: 33%;
+    height: 320px;
 }
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
 .Humans h1 {
     font-family: 'Pacifico', cursive;
-    background: linear-gradient(45deg, #a875ec 20%, #ff6b7c 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0px 2px 2px rgba(75, 75, 75, 0.5));
-    text-outline: 1px solid black;
+    font-size: 3rem;
+    margin-bottom: 0;
+    line-height: 55px;
+    font-weight: 500;
+    color: rgb(80, 80, 80);
+    padding: 0 5rem;
 }
 
 .Humans form {
-    padding: 3rem;  
+    padding: 1rem 5rem;  
 }
 
 .Humans h2 {
     font-family: 'Roboto', sans-serif;
     color: #666;
-    margin-top: 20%;
-    margin-left: 20%;
+    margin-top: 6%;
+    margin-bottom: 0;
+    padding: 0 5rem;
+}
+.d {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 4%;
 }

@@ -74,20 +74,18 @@ class Login extends Component {
         return (
             <div>
                 <Grid container direction="row" className="Humans">
-                    <Grid item xs={7}>
+                    <Grid item xs={6} className="images">
                         <img src={Standing}></img>
                         <img src={Sitting}></img>
                     </Grid>
-                    <Grid item xs={5}>
-                        <h1>Love Your Body</h1>
+                    <Grid item xs={6}>
+                        <h1>Bienvenide a <br></br> Love Your Body</h1>
                         <h2>Inicia sesión con tu cuenta</h2>
                         <form onSubmit={this.handleSubmit}>
                         <FormControl margin="normal" required fullWidth>
-                            <Input placeholder="Ingresa tu correo electrónico" className="Login_inputs" id="email" type="email" name="email" onChange={this.handleEmailChange} />
-                        </FormControl>
-                        <FormControl margin="normal" required fullWidth>
+                            <Input placeholder="Correo electrónico" className="Login_inputs" id="email" type="email" name="email" onChange={this.handleEmailChange} />
                             <Input
-                                placeholder="Ingresa tu contraseña"
+                                placeholder="Contraseña"
                                 className="Login_inputs"
                                 id="adornment-password"
                                 type={this.state.showPassword ? 'text' : 'password'}
@@ -97,20 +95,44 @@ class Login extends Component {
                                     <InputAdornment position="end">
                                         <IconButton
                                             aria-label="Toggle password visibility"
-                                            onClick={this.handleClickShowPassword}
-                                        >
+                                            onClick={this.handleClickShowPassword}>
                                             {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
                                         </IconButton>
                                     </InputAdornment>
                                 }
                             />
                         </FormControl>
-                        <Button variant="raised" color="primary" fullWidth type="submit" className="Login_btn">Iniciar sesión</Button>  
+                        <Grid container direction="row" className="">
+                            <Grid item xs={6}>
+                                <p>¿No tienes cuenta? <Link to="/registro"> Registrate aquí</Link></p> 
+                            </Grid>
+                            <Grid item xs={6}>
+                                <Button variant="raised" color="primary" fullWidth type="submit" className="Login_btn">Iniciar sesión</Button>  
+                            </Grid>
+                        </Grid>
+                        <Grid container direction="row" justify="center" alignItems="center" className="-o-">
+            <Grid item xs={3} sm={1} md={1} lg={1} xl={1}>
+            <div className="Login_line"></div>
+            </Grid>
+            <Grid item xs={1} className="ó">
+            ó
+            </Grid>
+            <Grid item xs={3} sm={1} md={1} lg={1} xl={1}>
+            <div className="Login_line"></div>
+            </Grid>
+            </Grid>
+                        <Grid container direction="row" className="d">
+                            <Grid item xs={6}>
+                            <Button onClick={this.loginFB} className="Login_btn-fb">Inicia sesión con <strong>Facebook</strong></Button>
+                            </Grid>
+                            <Grid item xs={6}>
+                            <Button onClick={this.loginGG} className="Login_btn-gg">Inicia sesión con <strong>Google</strong></Button>
+                            </Grid>
+                        </Grid>
                     </form>
                     </Grid>
                 </Grid>
                 
-
       {/*       <Grid container direction="column" justify="center" alignItems="center">
                 <Grid item xs={7} sm={3} md={2} lg={2} xl={2}>
                 <img className="Login_main-logo" src={logo}></img>

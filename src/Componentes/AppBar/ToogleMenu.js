@@ -11,6 +11,7 @@ import  MenuIcon  from '@material-ui/icons/Menu';
 import  IconButton  from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom';
 import Fullmessage from '../messages/Fullmessage';
+import app from './../../base';
 
 const styles = theme => ({
   root: {
@@ -42,6 +43,12 @@ class MenuListComposition extends React.Component {
 
     this.setState({ open: false });
   };
+
+  cerrarSesion = () => {
+    app.auth().signOut().then(() => {
+      alert('vuelve pronto :D')
+    })
+  }
 
   render() {
     const { classes } = this.props;
@@ -75,6 +82,7 @@ class MenuListComposition extends React.Component {
                       <MenuItem onClick={this.handleClose} component={toReviews}>Reseñas de tiendas</MenuItem>
                       <MenuItem onClick={this.handleClose} component={toEvents}>Eventos</MenuItem>
                       <MenuItem onClick={this.handleClose} component={toMessage}>Foro</MenuItem>
+                      <MenuItem onClick={this.cerrarSesion}>Cerar sesion</MenuItem>
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>

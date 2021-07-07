@@ -16,7 +16,6 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import app from './../../base';
 import { Redirect,Link } from 'react-router-dom';
 import './appbar.css';
 import ToogleMenu from "./ToogleMenu";
@@ -120,11 +119,7 @@ class PrimarySearchAppBar extends React.Component {
   handleMobileMenuClose = () => {
     this.setState({ mobileMoreAnchorEl: null });
   };
-  cerrarSesion = () => {
-    app.auth().signOut().then(() => {
-      alert('vuelve pronto :D')
-    })
-  }
+
   handleMenuClose_MenuOpen = event => {
     this.setState({ menuitem: event.currentTarget });
   }
@@ -148,12 +143,7 @@ class PrimarySearchAppBar extends React.Component {
         transformOrigin={{ vertical: "top", horizontal: "right" }}
         open={isMenuOpen}
         onClose={this.handleMenuClose}
-        
       >
-      <MenuItem onClick={this.handleClose} component={toUserProfile}>Perfil</MenuItem>
-        <MenuItem onClick={this.handleClose}>My account</MenuItem>
-        <MenuItem onClick={this.cerrarSesion}>Cerar sesion</MenuItem>
-       
       </Menu>
     );
 
@@ -165,30 +155,6 @@ class PrimarySearchAppBar extends React.Component {
         open={isMobileMenuOpen}
         onClose={this.handleMobileMenuClose}
       >
-        <MenuItem>
-          <IconButton color="inherit">
-            <Badge
-              className={classes.margin}
-              badgeContent={4}
-              color="secondary"
-            >
-              <MailIcon />
-            </Badge>
-          </IconButton>
-          <p>Messages</p>
-        </MenuItem>
-        <MenuItem>
-          <IconButton color="inherit">
-            <Badge
-              className={classes.margin}
-              badgeContent={11}
-              color="secondary"
-            >
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-          <p>Notifications</p>
-        </MenuItem>
         <MenuItem onClick={this.handleProfileMenuOpen}>
           <IconButton color="inherit">
             <AccountCircle />
@@ -203,57 +169,48 @@ class PrimarySearchAppBar extends React.Component {
         <AppBar position="static">
           <Toolbar className="menuitem">
           <ToogleMenu></ToogleMenu>
-            
-            <Typography
-              className={classes.title}
-              variant="title"
-              color="inherit"
-              noWrap
-            >
-              Love Your Body
-            </Typography>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <Input
-                placeholder="Search…"
-                disableUnderline
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput
-                }}
-              />
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
             </div>
-            <div className={classes.grow} />
-            <div className={classes.sectionDesktop}>
-              <IconButton color="inherit">
-                <Badge
-                  className={classes.margin}
-                  badgeContent={4}
-                  color="secondary"
-                >
-                  <MailIcon />
-                </Badge>
-              </IconButton>
-              <IconButton color="inherit">
-                <Badge
-                  className={classes.margin}
-                  badgeContent={17}
-                  color="secondary"
-                >
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-              <IconButton
-                aria-owns={isMenuOpen ? "material-appbar" : null}
-                aria-haspopup="true"
-                onClick={this.handleProfileMenuOpen}
-                color="inherit"
+            <Input
+              placeholder="Buscar…"
+              disableUnderline
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput
+              }}
+            />
+          </div>
+          <div className={classes.grow} />
+          <div className={classes.sectionDesktop}>
+            <IconButton color="inherit">
+              <Badge
+                className={classes.margin}
+                badgeContent={4}
+                color="secondary"
               >
-                <AccountCircle />
-              </IconButton>
-            </div>
+                <MailIcon />
+              </Badge>
+            </IconButton>
+            <IconButton color="inherit">
+              <Badge
+                className={classes.margin}
+                badgeContent={17}
+                color="secondary"
+              >
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+            <IconButton
+              aria-owns={isMenuOpen ? "material-appbar" : null}
+              aria-haspopup="true"
+              onClick={this.handleProfileMenuOpen}
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>
+          </div>
             <div className={classes.sectionMobile}>
               <IconButton
                 aria-haspopup="true"

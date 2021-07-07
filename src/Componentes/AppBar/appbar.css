@@ -1,3 +1,13 @@
 .MuiAppBar-positionFixed-0294{
     position: relative;
 }
+
+.MuiAppBar-colorPrimary-0277, .MuiAppBar-colorPrimary-0186 {
+    background-image: linear-gradient(#58D498, #46E89C) !important;
+    background-color: none;
+}
+
+.MuiToolbar-regular-0245 .MuiToolbar-regular-0350 {
+    background-image: linear-gradient(#58D498, #46E89C) !important;
+    background-color: none;   
+}

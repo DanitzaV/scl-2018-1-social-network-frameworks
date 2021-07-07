@@ -1,10 +1,142 @@
-#fondologin{
-    background-color: aquamarine;
-    height: 100vh;
+* {
+    font-family: 'Roboto', sans-serif;
 }
+
 body{
     margin: 0;
+    background-color: white;
+    font-family: 'Raleway', sans-serif;
 }
-.btnLogin{
+
+/* Logo */
+.Login_main-logo, .Registro_logo {
+    width: 100%;
+    margin-bottom: 2rem;
+} 
+
+/* Inputs */
+.Login_inputs {
+    border: 2px solid rgb(180, 180, 180);
+    font-weight: 500;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.Login_inputs:after, .Login_inputs:before {
+    transform: none !important;
+    transition: none !important;
+    border-bottom: none !important;
+}
+
+/* Botones iniciar sesión y registro */
+.Registro_btn, .Login_btn-fb, .Login_btn-gg {
+    text-transform: none !important;
+    border-radius: 34px !important;
+    font-size: 15px !important;
+    color: white !important;
+    width: 100% !important;
+}
+.Login_btn {
+    text-transform: none !important;
+    border-radius: 34px !important;
+    font-size: 17px !important;
+    color: white !important;
+    padding: 15px;
+}
+
+.Login_btn, .Registro_btn {
+    background-color: rgb(161, 116, 242) !important;
     margin-inline-start: 2em;
+}
+
+.Login_btn-fb {
+    margin-top: 7%;
+    color: #3B5998 !important;
+    margin-bottom: 0.5rem !important;
+    background: white !important;
+    filter: drop-shadow(0 0 0.25rem rgb(175, 175, 175));
+}
+
+.Login_btn-gg {
+    color: #db3236 !important;
+    background: white !important;
+    filter: drop-shadow(0 0 0.25rem rgb(175, 175, 175));
+}
+
+strong {
+    margin-left: 0.2rem;
+}
+
+/* Pregunta login y registro */
+.Login_quest, .Registro_quest {
+    color: rgb(155, 150, 150);
+    text-align: center;
+    font-weight: 700;
+}
+
+/* --ó-- */
+.Login_line {
+    border: solid rgb(189, 187, 187) 1px;
+}
+
+.ó {
+    color: #666;
+}
+
+.-o- {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Texto registro y login */
+.MuiTypography-title-0107, .ó {
+    text-align: center;
+}
+
+.Registro_title {
+    font-size: 1.3rem;
+}
+
+.Humans {
+    height: 100vh;
+}
+.Humans .images {
+    background-image: url("../../img/Wireframe.svg");
+    background-position: center;
+    background-size: 95% 700px;
+    background-repeat: no-repeat;
+    display: flex;
+    padding: 25px;
+}
+.Humans img {
+    margin-top: 33%;
+    height: 320px;
+}
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+.Humans h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    margin-bottom: 0;
+    line-height: 55px;
+    font-weight: 500;
+    color: rgb(80, 80, 80);
+    padding: 0 5rem;
+}
+
+.Humans form {
+    padding: 1rem 5rem;  
+}
+
+.Humans h2 {
+    font-family: 'Roboto', sans-serif;
+    color: #666;
+    margin-top: 6%;
+    margin-bottom: 0;
+    padding: 0 5rem;
+}
+.d {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 4%;
 }

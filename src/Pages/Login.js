@@ -1,77 +1,154 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './../Componentes/Login/Login.css'
 import {Grid, Button, Input, FormControl,InputLabel} from '@material-ui/core';
 import Title from './../Componentes/Title/Title';
 import './../Componentes/Login/Login.css'
-import logo from './../img/queen.png';
+import logo from './../img/main-logo.jpg';
 import app from './../base';
 import {Link} from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import firebase, { auth, providerGG, providerFB } from '../base';
+import Sitting from './../img/sitting-1.png';
+import Standing from './../img/standing-3.png';
+
 class Login extends Component {
-    constructor () {
-        
+    constructor () {   
         super();
         this.state = {
           email: '',
           password: '',
+          user: null,
           showPassword: false,
         };
+        this.loginGG = this.loginGG.bind(this);
+        this.loginFB = this.loginFB.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleEmailChange = this.handleEmailChange.bind(this);
-      
-    
-      }
-      handleChange = prop => event => {
-        this.setState({ [prop]: event.target.value });
-      };
-    
-      handleClickShowPassword = () => {
-        this.setState(state => ({ showPassword: !state.showPassword }));
-      };
-      
-      handleEmailChange (evt) {
-        this.setState({ email: evt.target.value });
-      }
-      handleSubmit(event) {
-        event.preventDefault();
-       app.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-    .then((user) => {
-        
-     })
-    .catch((error) => {
-        console.log("Error de firebase > Código > "+error.code);
-        console.log("Error de firebase > Mensaje > "+error.message);
-     });
-        
-      }
+        this.handleEmailChange = this.handleEmailChange.bind(this);  
+    }
 
-  
+    handleChange = prop => event => {
+        this.setState({ [prop]: event.target.value });
+    };
+    
+    handleClickShowPassword = () => {
+        this.setState(state => ({ showPassword: !state.showPassword }));
+    };
+      
+    handleEmailChange (evt) {
+        this.setState({ email: evt.target.value });
+    }
+    
+    handleSubmit(event) {
+        event.preventDefault();
+        app.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+        .then((user) => {
+    
+        })
+        .catch((error) => {
+            console.log("Error de firebase > Código > "+error.code);
+            console.log("Error de firebase > Mensaje > "+error.message);
+        });
+    
+    }
+    
+    loginGG() {
+        auth.signInWithPopup(providerGG) 
+          .then((result) => {
+            const user = result.user;
+            this.setState({ user });
+        });
+    }
+      
+    loginFB() {
+        auth.signInWithPopup(providerFB) 
+        .then((result) => {
+          const user = result.user;
+          this.setState({ user });
+        });
+    }
+    
     render () {
         return (
-                <Grid container direction="column"
-                    justify="center"
-                    alignItems="center" id="fondologin">
-                    <Title titulo="LOVE YOUR BODY" imagen={logo} ></Title>
-                    <Grid item xs={8} sm={6} md={6} lg={6} >
-                    <form onSubmit={this.handleSubmit}>
-                            <FormControl margin="normal" required fullWidth>
-                                <InputLabel htmlFor="email">Email Address</InputLabel>
-                                <Input id="email" type="email" name="email" autoComplete="email" onChange={this.handleEmailChange} />
-                            </FormControl>
-                            
+            <div>
+                <Grid container direction="row" className="Humans">
+                    <Grid item xs={6} className="images">
+                        <img src={Standing}></img>
+                        <img src={Sitting}></img>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <h1>Bienvenide a <br></br> Love Your Body</h1>
+                        <h2>Inicia sesión con tu cuenta</h2>
+                        <form onSubmit={this.handleSubmit}>
                         <FormControl margin="normal" required fullWidth>
-                            <InputLabel htmlFor="adornment-password">Password</InputLabel>
+                            <Input placeholder="Correo electrónico" className="Login_inputs" id="email" type="email" name="email" onChange={this.handleEmailChange} />
                             <Input
+                                placeholder="Contraseña"
+                                className="Login_inputs"
                                 id="adornment-password"
                                 type={this.state.showPassword ? 'text' : 'password'}
                                 value={this.state.password}
-                                autoComplete="current-password"
+                                onChange={this.handleChange('password')}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="Toggle password visibility"
+                                            onClick={this.handleClickShowPassword}>
+                                            {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                            />
+                        </FormControl>
+                        <Grid container direction="row" className="">
+                            <Grid item xs={6}>
+                                <p>¿No tienes cuenta? <Link to="/registro"> Registrate aquí</Link></p> 
+                            </Grid>
+                            <Grid item xs={6}>
+                                <Button variant="raised" color="primary" fullWidth type="submit" className="Login_btn">Iniciar sesión</Button>  
+                            </Grid>
+                        </Grid>
+                        <Grid container direction="row" justify="center" alignItems="center" className="-o-">
+            <Grid item xs={3} sm={1} md={1} lg={1} xl={1}>
+            <div className="Login_line"></div>
+            </Grid>
+            <Grid item xs={1} className="ó">
+            ó
+            </Grid>
+            <Grid item xs={3} sm={1} md={1} lg={1} xl={1}>
+            <div className="Login_line"></div>
+            </Grid>
+            </Grid>
+                        <Grid container direction="row" className="d">
+                            <Grid item xs={6}>
+                            <Button onClick={this.loginFB} className="Login_btn-fb">Inicia sesión con <strong>Facebook</strong></Button>
+                            </Grid>
+                            <Grid item xs={6}>
+                            <Button onClick={this.loginGG} className="Login_btn-gg">Inicia sesión con <strong>Google</strong></Button>
+                            </Grid>
+                        </Grid>
+                    </form>
+                    </Grid>
+                </Grid>
+                
+      {/*       <Grid container direction="column" justify="center" alignItems="center">
+                <Grid item xs={7} sm={3} md={2} lg={2} xl={2}>
+                <img className="Login_main-logo" src={logo}></img>
+                </Grid>
+                <Grid item xs={8} sm={6} lg={4} xl={4}>
+                    <form onSubmit={this.handleSubmit}>
+                        <FormControl margin="normal" required fullWidth>
+                            <Input placeholder="Ingresa tu correo electrónico" className="Login_inputs" id="email" type="email" name="email" onChange={this.handleEmailChange} />
+                        </FormControl>
+                        <FormControl margin="normal" required fullWidth>
+                            <Input
+                                placeholder="Ingresa tu contraseña"
+                                className="Login_inputs"
+                                id="adornment-password"
+                                type={this.state.showPassword ? 'text' : 'password'}
+                                value={this.state.password}
                                 onChange={this.handleChange('password')}
                                 endAdornment={
                                     <InputAdornment position="end">
@@ -85,91 +162,35 @@ class Login extends Component {
                                 }
                             />
                         </FormControl>
-                            <p>No tengo cuenta, <Link to="/registro">Registrate</Link></p>
-                            <Button  variant="raised" color="primary" fullWidth type="submit" className="btnLogin">Inicia Sesion</Button>
-                            
-                        </form>
-
-                    </Grid>
-
+                        <Button variant="raised" color="primary" fullWidth type="submit" className="Login_btn">Iniciar sesión</Button>  
+                    </form>
                 </Grid>
-
-           
-
+            </Grid>
+            <Grid container direction="row" justify="center" alignItems="center" className="-o-">
+            <Grid item xs={3} sm={1} md={1} lg={1} xl={1}>
+            <div className="Login_line"></div>
+            </Grid>
+            <Grid item xs={1} className="ó">
+            ó
+            </Grid>
+            <Grid item xs={3} sm={1} md={1} lg={1} xl={1}>
+            <div className="Login_line"></div>
+            </Grid>
+            </Grid>
+            <Grid container direction="column" justify="center" alignItems="center">
+            <Grid item xs={8} sm={6} lg={4} xl={4}>
+            <Button onClick={this.loginFB} className="Login_btn-fb">Inicia sesión con <strong>Facebook</strong></Button>
+            <Button onClick={this.loginGG} className="Login_btn-gg">Inicia sesión con <strong>Google</strong></Button>
+            </Grid>
+            </Grid>
+            <Grid container justify="center">
+                <Grid item xs={8}>
+                <p className="Login_quest">¿No tienes cuenta? <br></br> Regístrate <Link to="/registro">aquí</Link></p>
+                </Grid>
+            </Grid> */}
+            </div>
         );
     }
-  }
-
-// class Login extends Component {
-//     constructor(props){
-//         super(props);
-//         this.handleSubmit = this.handleSubmit.bind(this);
-
-//         this.correo = React.createRef();
-//         this.contraseña = React.createRef();
-//     }
-//     handleChange(event) {
-//         this.setState({value: event.target.value});
-//       }
-    
-//       handleSubmit(event) {
-//         const currentUser = firebase.auth().currentUser;
-//         console.log(currentUser);
-//             const horas = new Date().toLocaleString();
-
-//             const newMessageKey = firebase.database().ref().child('postuser').push().key;
-//         firebase.database().ref(`postuser/${newMessageKey}`).set({
-//             creator : currentUser.uid,
-//             creatorName : currentUser.displayName,
-//             creatorcorreo: currentUser.email,
-//             creatorImg: currentUser.photoURL,
-//             year: horas,
-//             text : this.state.value
-//         });
-
-//         event.preventDefault();
-//       }
-//     handleSubmit(event) {
-//         event.preventDefault();
-//        app.auth().signInWithEmailAndPassword(this.correo.current.value, this.contraseña.current.value)
-//     .then((user) => {
-        
-//      })
-//     .catch((error) => {
-//         console.log("Error de firebase > Código > "+error.code);
-//         console.log("Error de firebase > Mensaje > "+error.message);
-//      });
-        
-//       }
-
-//     render(){
-//         return(
-//             <div id="fondologin" >
-//                 <Title titulo="LOVE YOUR BODY" imagen={logo} ></Title>
-//                 <Grid container spacing={2} >
-//                     <Grid item xs />               
-//                     <Grid item xs={8} sm={6} md={6} lg={6} >
-//                         <form onSubmit={this.handleSubmit}>
-//                             <label>
-//                                 Email:
-//                             <input required type="email" ref={this.correo} />
-//                             </label>
-//                             <label>
-//                                 Contraseña:
-//                             <input required type="password" ref={this.contraseña} />
-//                             </label>
-//                             <input type="submit" value="Submit" />
-
-//                            <Link to="/registro">Registro</Link>
-//                         </form>
-//                     </Grid>
-//                     <Grid item xs />
-//                 </Grid>
-//             </div>
-    
-//             )
-//     }
-// }
-
+}
 
 export default Login;
